@@ -1,0 +1,16 @@
+# build scratch
+/.builder_*
+/.build_metadata*
+/.stage_*
+/.spawn.*
+/_build_ctx.json
+/PUBLISH_BLOCKED.md
+/BUILD_SETUP_NEXT_STEPS.md
+/.claude/
+/CLAUDE.md
+
+# go build output
+/subsweep
+/dist/
+*.test
+*.out
