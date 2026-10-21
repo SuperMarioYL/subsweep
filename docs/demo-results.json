@@ -1,0 +1,172 @@
+{
+  "tool": "subsweep",
+  "version": "0.1.0",
+  "recorded_at": "2026-10-21",
+  "description": "一次完整快速上手运行的实录：两份合成样例账单导出（支付宝 GB18030、微信 UTF-8 带 BOM）→ 解析检出 → 续费体检报告。所有数据为脱敏合成样例，随仓库内置，可完整复现。",
+  "environment": {
+    "go": "1.24",
+    "os": "darwin/arm64",
+    "binary": "go build -o subsweep .",
+    "llm_assist": "off（默认关闭，本次运行未使用任何外部服务）"
+  },
+  "inputs": [
+    {
+      "path": "internal/bills/testdata/alipay_sample.csv",
+      "platform": "alipay",
+      "encoding": "GB18030",
+      "transactions": 27,
+      "window": "2025-04-01 ~ 2025-09-30",
+      "note": "合成样例：5 组月度代扣（爱奇艺、百度网盘、喜马拉雅、WPS、一组知识库未收录的陌生商户）+ 日常消费与转账收入"
+    },
+    {
+      "path": "internal/bills/testdata/wechat_sample.csv",
+      "platform": "wechat",
+      "encoding": "UTF-8 (BOM)",
+      "transactions": 22,
+      "window": "2025-04-01 ~ 2025-09-30",
+      "note": "合成样例：3 组月度代扣（腾讯视频、网易云音乐、QQ音乐）+ 日常消费与红包/转账收入"
+    }
+  ],
+  "commands": [
+    {
+      "cmd": "go build -o subsweep .",
+      "purpose": "构建单文件二进制（Release 也提供预编译下载）"
+    },
+    {
+      "cmd": "./subsweep version",
+      "output": "subsweep 0.1.0 (darwin/arm64)"
+    },
+    {
+      "cmd": "./subsweep parse internal/bills/testdata/alipay_sample.csv internal/bills/testdata/wechat_sample.csv",
+      "purpose": "逐行打印疑似代扣候选（商户、平台、金额、日期、命中信号、置信度）",
+      "output": "\ninternal/bills/testdata/alipay_sample.csv（支付宝 · 共 27 笔交易，疑似代扣 21 笔）\n商户                        平台      金额  日期        命中信号                                  置信度\n上海喜马拉雅科技有限公司    支付宝  ¥20.00  2025-04-06  命中服务名单、按月重复扣款、备注代扣字样    0.95\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-04-10  命中服务名单、按月重复扣款、备注代扣字样    0.95\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-04-15  命中服务名单、按月重复扣款                  0.85\n杭州优卖网络科技有限公司    支付宝  ¥39.00  2025-04-21  按月重复扣款                                0.30\n上海喜马拉雅科技有限公司    支付宝  ¥20.00  2025-05-06  命中服务名单、按月重复扣款                  0.85\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-05-10  命中服务名单、按月重复扣款                  0.85\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-05-15  命中服务名单、按月重复扣款                  0.85\n杭州优卖网络科技有限公司    支付宝  ¥39.00  2025-05-21  按月重复扣款                                0.30\n上海喜马拉雅科技有限公司    支付宝  ¥20.00  2025-06-06  命中服务名单、按月重复扣款                  0.85\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-06-10  命中服务名单、按月重复扣款                  0.85\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-06-15  命中服务名单、按月重复扣款                  0.85\n杭州优卖网络科技有限公司    支付宝  ¥39.00  2025-06-21  按月重复扣款                                0.30\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-07-10  命中服务名单、按月重复扣款                  0.85\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-07-15  命中服务名单、按月重复扣款                  0.85\n杭州优卖网络科技有限公司    支付宝  ¥39.00  2025-07-21  按月重复扣款                                0.30\n珠海金山办公软件有限公司    支付宝  ¥12.00  2025-08-02  命中服务名单、备注代扣字样                  0.70\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-08-10  命中服务名单、按月重复扣款                  0.85\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-08-15  命中服务名单、按月重复扣款                  0.85\n杭州优卖网络科技有限公司    支付宝  ¥39.00  2025-08-21  按月重复扣款                                0.30\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-09-10  命中服务名单、按月重复扣款                  0.85\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-09-15  命中服务名单、按月重复扣款                  0.85\n\ninternal/bills/testdata/wechat_sample.csv（微信 · 共 22 笔交易，疑似代扣 14 笔）\n商户        平台    金额  日期        命中信号                                  置信度\n网易云音乐  微信  ¥15.00  2025-04-08  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-04-12  命中服务名单、按月重复扣款、备注代扣字样    0.95\n网易云音乐  微信  ¥15.00  2025-05-08  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-05-12  命中服务名单、按月重复扣款                  0.85\nQQ音乐      微信  ¥15.00  2025-06-01  命中服务名单、按月重复扣款、备注代扣字样    0.95\n网易云音乐  微信  ¥15.00  2025-06-08  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-06-12  命中服务名单、按月重复扣款                  0.85\nQQ音乐      微信  ¥15.00  2025-07-01  命中服务名单、按月重复扣款                  0.85\n网易云音乐  微信  ¥15.00  2025-07-08  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-07-12  命中服务名单、按月重复扣款                  0.85\nQQ音乐      微信  ¥15.00  2025-08-01  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-08-12  命中服务名单、按月重复扣款                  0.85\n网易云音乐  微信  ¥15.00  2025-09-08  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-09-12  命中服务名单、按月重复扣款                  0.85"
+    },
+    {
+      "cmd": "./subsweep report internal/bills/testdata/alipay_sample.csv internal/bills/testdata/wechat_sample.csv -o 体检报告.md",
+      "purpose": "按签约分组生成续费体检清单，并导出 Markdown 报告",
+      "output": "续费体检清单（2026-10-21 08:25）\n扫描 2 份账单、49 笔交易，检出疑似自动续费 8 项（35 笔扣款），年化合计 ¥2,052.00\n已确认 0 项、待确认 8 项、不认识 0 项\n\n商户                      平台      月费     年化  信号                                        置信度  状态    取消入口      \n杭州优卖网络科技有限公司  支付宝  ¥39.00  ¥468.00  按月重复扣款                                  0.30  待确认  未收录        \n腾讯视频                  微信    ¥30.00  ¥360.00  命中服务名单、按月重复扣款、备注含代扣字样    0.95  待确认  腾讯视频 App  \n爱奇艺                    支付宝  ¥25.00  ¥300.00  命中服务名单、按月重复扣款、备注含代扣字样    0.95  待确认  爱奇艺 App    \n喜马拉雅                  支付宝  ¥20.00  ¥240.00  命中服务名单、按月重复扣款、备注含代扣字样    0.95  待确认  喜马拉雅 App  \nQQ音乐                    微信    ¥15.00  ¥180.00  命中服务名单、按月重复扣款、备注含代扣字样    0.95  待确认  QQ音乐 App    \n百度网盘                  支付宝  ¥15.00  ¥180.00  命中服务名单、按月重复扣款                    0.85  待确认  百度网盘 App  \n网易云音乐                微信    ¥15.00  ¥180.00  命中服务名单、按月重复扣款                    0.85  待确认  网易云音乐 App\nWPS超级会员               支付宝  ¥12.00  ¥144.00  命中服务名单、备注含代扣字样                  0.70  待确认  WPS Office App\n\n待核实 8 项——逐项确认后即为最终清单。"
+    },
+    {
+      "cmd": "./subsweep serve",
+      "purpose": "启动本地网页（默认 http://127.0.0.1:8787）：拖入账单、逐项确认、导出 Markdown / 单页 HTML / JSON",
+      "output": "SubSweep 续费体检已启动：http://127.0.0.1:8787\n数据仅在内存中，Ctrl+C 退出。"
+    }
+  ],
+  "results": {
+    "statements": 2,
+    "transactions": 49,
+    "suspect_signings": 8,
+    "suspect_charges": 35,
+    "annualized_total_fen": 205200,
+    "annualized_total": "¥2,052.00",
+    "forgotten": 8,
+    "items": [
+      {
+        "merchant": "杭州优卖网络科技有限公司",
+        "platform": "alipay",
+        "monthly": "¥39.00",
+        "annualized": "¥468.00",
+        "charges": 5,
+        "signals": [
+          "monthly_repeat"
+        ],
+        "catalog": "未收录（可用 DeepSeek 辅助识别）"
+      },
+      {
+        "merchant": "腾讯视频",
+        "platform": "wechat",
+        "monthly": "¥30.00",
+        "annualized": "¥360.00",
+        "charges": 6,
+        "signals": [
+          "known_merchant",
+          "monthly_repeat",
+          "keyword"
+        ],
+        "catalog": "腾讯视频 App"
+      },
+      {
+        "merchant": "爱奇艺",
+        "platform": "alipay",
+        "monthly": "¥25.00",
+        "annualized": "¥300.00",
+        "charges": 6,
+        "signals": [
+          "known_merchant",
+          "monthly_repeat",
+          "keyword"
+        ],
+        "catalog": "爱奇艺 App"
+      },
+      {
+        "merchant": "喜马拉雅",
+        "platform": "alipay",
+        "monthly": "¥20.00",
+        "annualized": "¥240.00",
+        "charges": 3,
+        "signals": [
+          "known_merchant",
+          "monthly_repeat",
+          "keyword"
+        ],
+        "catalog": "喜马拉雅 App"
+      },
+      {
+        "merchant": "QQ音乐",
+        "platform": "wechat",
+        "monthly": "¥15.00",
+        "annualized": "¥180.00",
+        "charges": 3,
+        "signals": [
+          "known_merchant",
+          "monthly_repeat",
+          "keyword"
+        ],
+        "catalog": "QQ音乐 App"
+      },
+      {
+        "merchant": "百度网盘",
+        "platform": "alipay",
+        "monthly": "¥15.00",
+        "annualized": "¥180.00",
+        "charges": 6,
+        "signals": [
+          "known_merchant",
+          "monthly_repeat"
+        ],
+        "catalog": "百度网盘 App"
+      },
+      {
+        "merchant": "网易云音乐",
+        "platform": "wechat",
+        "monthly": "¥15.00",
+        "annualized": "¥180.00",
+        "charges": 5,
+        "signals": [
+          "known_merchant",
+          "monthly_repeat"
+        ],
+        "catalog": "网易云音乐 App"
+      },
+      {
+        "merchant": "WPS超级会员",
+        "platform": "alipay",
+        "monthly": "¥12.00",
+        "annualized": "¥144.00",
+        "charges": 1,
+        "signals": [
+          "known_merchant",
+          "keyword"
+        ],
+        "catalog": "WPS Office App"
+      }
+    ]
+  },
+  "limitations": [
+    "检出是启发式并集（服务名单 + 同额月度重复 + 分类/备注关键词），供逐项确认而非机械结论",
+    "月度重复判定要求某相邻两次扣款间隔 27-33 天；跳月续费可能漏检",
+    "关键词只扫描 交易分类/交易类型 与 备注 两列，商品说明列的“连续包月”不算信号",
+    "取消路径来自人工核验的知识库（50 项），App 改版后路径可能过期，请以服务方官方页面为准",
+    "DeepSeek 辅助分类默认关闭；开启后仅发送商户名，不含金额与账号"
+  ]
+}
