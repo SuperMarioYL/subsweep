@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SubSweep · 续费体检</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 32 32" width="34" height="34" aria-hidden="true">
+      <rect x="2" y="2" width="28" height="28" rx="8" fill="var(--accent)"/>
+      <path d="M10 9h7.5a5.5 5.5 0 0 1 0 11H15l5 5h-5l-5-6V9z" fill="#fff" opacity="0.95"/>
+      <circle cx="23" cy="10" r="2.4" fill="#fff" opacity="0.55"/>
+    </svg>
+    <div>
+      <h1>SubSweep <span class="brand-sub">续费体检</span></h1>
+      <p>本地运行 · 数据不出本机 · 无账号</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="btn-export-md" class="btn ghost" hidden>导出 Markdown</button>
+    <button id="btn-export-html" class="btn ghost" hidden>导出单页 HTML</button>
+    <button id="btn-export-json" class="btn ghost" hidden>导出 JSON</button>
+    <button id="btn-reset" class="btn ghost danger" hidden>清空重来</button>
+  </div>
+</header>
+
+<main>
+  <section id="drop-section" class="card">
+    <div id="dropzone" class="dropzone" tabindex="0" aria-label="拖入账单 CSV 或点击选择文件">
+      <svg viewBox="0 0 48 48" width="44" height="44" aria-hidden="true">
+        <path d="M24 6v22M24 6l-8 8M24 6l8 8" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M8 30v6a4 4 0 0 0 4 4h24a4 4 0 0 0 4-4v-6" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" fill="none"/>
+      </svg>
+      <p class="drop-title">把支付宝 / 微信导出的账单 CSV 拖到这里</p>
+      <p class="drop-sub">
+        或 <label class="file-label">选择文件<input id="file-input" type="file" accept=".csv,text/csv" multiple></label>
+        · 支持两平台官方导出，自动识别编码与格式
+      </p>
+    </div>
+    <ul id="file-list" class="file-list"></ul>
+    <p id="upload-error" class="upload-error" hidden></p>
+  </section>
+
+  <section id="summary" class="summary" hidden>
+    <div class="stat"><span id="stat-items">0</span><label>疑似签约项</label></div>
+    <div class="stat accent"><span id="stat-annual">¥0.00</span><label>年化成本合计</label></div>
+    <div class="stat warn"><span id="stat-forgotten">0</span><label>疑似遗忘 / 待核实</label></div>
+  </section>
+
+  <section id="checklist" class="checklist" hidden>
+    <div class="checklist-head">
+      <h2>续费体检清单</h2>
+      <p class="hint">检出结果由启发式生成，逐项确认后即为最终清单；取消动作请到官方入口由你本人完成。</p>
+    </div>
+    <div id="items"></div>
+  </section>
+
+  <section id="llm-card" class="card llm-card">
+    <h2>认不出某笔扣款？可选开启 DeepSeek 辅助分类</h2>
+    <p class="hint">默认关闭。开启后，本地规则识别不出的商户名（<b>仅商户名，不含金额、日期、账号</b>）会发送给你自己的 DeepSeek API Key 所对应的模型。Key 只保存在本次会话内存里，不落盘。</p>
+    <form id="llm-form">
+      <input id="llm-key" type="password" placeholder="sk-…（你的 DeepSeek API Key）" autocomplete="off">
+      <input id="llm-model" type="text" value="deepseek-flash" placeholder="deepseek-flash / deepseek-v4-pro" autocomplete="off">
+      <button class="btn" type="submit">保存</button>
+    </form>
+    <p id="llm-state" class="hint"></p>
+  </section>
+</main>
+
+<footer>
+  <p>SubSweep 续费体检 · 检出结果仅供核对，不是机械结论 · 取消路径来自人工核验的知识库，若与最新版本不符，请以服务方官方页面为准</p>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>
