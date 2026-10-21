@@ -1,0 +1,505 @@
+{
+  "version": 1,
+  "services": [
+    {
+      "canonical_name": "腾讯视频",
+      "aliases": ["深圳市腾讯计算机系统有限公司", "腾讯视频VIP"],
+      "keywords": ["腾讯视频VIP"],
+      "cancel": {
+        "app": "腾讯视频 App",
+        "steps": ["个人中心", "VIP会员", "续费管理", "关闭自动续费"],
+        "url": "https://film.qq.com/"
+      }
+    },
+    {
+      "canonical_name": "爱奇艺",
+      "aliases": ["上海恩空中文化传播有限公司", "爱奇艺VIP会员"],
+      "keywords": ["黄金VIP会员", "白金VIP会员"],
+      "cancel": {
+        "app": "爱奇艺 App",
+        "steps": ["我的", "会员卡", "自动续费管理", "取消自动续费"],
+        "url": "https://www.iqiyi.com/"
+      }
+    },
+    {
+      "canonical_name": "优酷",
+      "aliases": ["优酷VIP会员"],
+      "keywords": ["优酷VIP"],
+      "cancel": {
+        "app": "优酷 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://www.youku.com/"
+      }
+    },
+    {
+      "canonical_name": "芒果TV",
+      "aliases": ["芒果TV会员", "湖南快乐阳光互动娱乐传媒有限公司"],
+      "keywords": ["芒果TV会员"],
+      "cancel": {
+        "app": "芒果TV App",
+        "steps": ["我的", "会员卡", "自动续费管理", "取消自动续费"],
+        "url": "https://www.mgtv.com/"
+      }
+    },
+    {
+      "canonical_name": "哔哩哔哩大会员",
+      "aliases": ["哔哩哔哩", "B站大会员"],
+      "keywords": ["哔哩哔哩大会员", "B站大会员"],
+      "cancel": {
+        "app": "哔哩哔哩 App",
+        "steps": ["我的", "大会员", "自动续费管理", "取消连续包月"],
+        "url": "https://account.bilibili.com/big/member"
+      }
+    },
+    {
+      "canonical_name": "咪咕视频",
+      "aliases": ["咪咕视频会员"],
+      "keywords": ["咪咕视频会员"],
+      "cancel": {
+        "app": "咪咕视频 App",
+        "steps": ["我的", "我的会员", "自动续费管理", "取消自动续费"],
+        "url": "https://www.miguvideo.com/"
+      }
+    },
+    {
+      "canonical_name": "搜狐视频",
+      "aliases": ["搜狐视频会员"],
+      "keywords": ["搜狐视频VIP"],
+      "cancel": {
+        "app": "搜狐视频 App",
+        "steps": ["我的", "VIP会员", "自动续费管理", "取消自动续费"],
+        "url": "https://tv.sohu.com/"
+      }
+    },
+    {
+      "canonical_name": "QQ音乐",
+      "aliases": ["QQ音乐豪华绿钻", "绿钻豪华版"],
+      "keywords": ["QQ音乐", "绿钻"],
+      "cancel": {
+        "app": "QQ音乐 App",
+        "steps": ["我的", "会员中心", "自动续费", "关闭自动续费"],
+        "url": "https://y.qq.com/"
+      }
+    },
+    {
+      "canonical_name": "网易云音乐",
+      "aliases": ["杭州乐读科技有限公司", "网易云音乐黑胶VIP"],
+      "keywords": ["黑胶VIP"],
+      "cancel": {
+        "app": "网易云音乐 App",
+        "steps": ["我的", "黑胶VIP", "管理自动续费", "关闭自动续费"],
+        "url": "https://music.163.com/"
+      }
+    },
+    {
+      "canonical_name": "酷狗音乐",
+      "aliases": ["酷狗豪华VIP"],
+      "keywords": ["酷狗"],
+      "cancel": {
+        "app": "酷狗音乐 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://www.kugou.com/"
+      }
+    },
+    {
+      "canonical_name": "酷我音乐",
+      "aliases": ["酷我豪华VIP"],
+      "keywords": ["酷我"],
+      "cancel": {
+        "app": "酷我音乐 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://www.kuwo.cn/"
+      }
+    },
+    {
+      "canonical_name": "咪咕音乐",
+      "aliases": ["咪咕音乐会员"],
+      "keywords": ["咪咕音乐"],
+      "cancel": {
+        "app": "咪咕音乐 App",
+        "steps": ["我的", "会员", "自动续费管理", "取消自动续费"],
+        "url": "https://music.migu.cn/"
+      }
+    },
+    {
+      "canonical_name": "百度网盘",
+      "aliases": ["北京百度网讯科技有限公司", "百度网盘超级会员"],
+      "keywords": ["百度网盘", "网盘超级会员"],
+      "cancel": {
+        "app": "百度网盘 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消续费"],
+        "url": "https://pan.baidu.com/"
+      }
+    },
+    {
+      "canonical_name": "阿里云盘",
+      "aliases": ["阿里云盘会员"],
+      "keywords": ["阿里云盘"],
+      "cancel": {
+        "app": "阿里云盘 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://www.alipan.com/"
+      }
+    },
+    {
+      "canonical_name": "夸克网盘",
+      "aliases": ["夸克", "夸克SVIP"],
+      "keywords": ["夸克网盘", "夸克SVIP"],
+      "cancel": {
+        "app": "夸克 App",
+        "steps": ["我的", "夸克会员", "自动续费管理", "取消自动续费"],
+        "url": "https://quark.cn/"
+      }
+    },
+    {
+      "canonical_name": "天翼云盘",
+      "aliases": ["天翼云盘会员"],
+      "keywords": ["天翼云盘"],
+      "cancel": {
+        "app": "天翼云盘 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://cloud.189.cn/"
+      }
+    },
+    {
+      "canonical_name": "中国移动云盘",
+      "aliases": ["和彩云", "移动云盘"],
+      "keywords": ["和彩云", "移动云盘"],
+      "cancel": {
+        "app": "中国移动云盘 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://yun.139.com/"
+      }
+    },
+    {
+      "canonical_name": "迅雷",
+      "aliases": ["迅雷超级会员", "深圳市迅雷网络技术有限公司"],
+      "keywords": ["迅雷会员", "迅雷超级会员"],
+      "cancel": {
+        "app": "迅雷 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://www.xunlei.com/"
+      }
+    },
+    {
+      "canonical_name": "腾讯微云",
+      "aliases": ["微云", "微云会员"],
+      "keywords": ["微云"],
+      "cancel": {
+        "app": "腾讯微云 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://www.weiyun.com/"
+      }
+    },
+    {
+      "canonical_name": "115网盘",
+      "aliases": ["115会员"],
+      "keywords": ["115网盘"],
+      "cancel": {
+        "app": "115 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://115.com/"
+      }
+    },
+    {
+      "canonical_name": "坚果云",
+      "aliases": ["坚果云专业版"],
+      "keywords": ["坚果云"],
+      "cancel": {
+        "app": "坚果云 App",
+        "steps": ["我的", "账户信息", "会员与支付", "取消自动续费"],
+        "url": "https://www.jianguoyun.com/"
+      }
+    },
+    {
+      "canonical_name": "Microsoft 365",
+      "aliases": ["Microsoft 365 个人版", "Office 365", "微软365"],
+      "keywords": ["Microsoft 365", "Office 365"],
+      "cancel": {
+        "app": "Microsoft 账户（网页）",
+        "steps": ["登录 account.microsoft.com", "服务与订阅", "选择 Microsoft 365", "关闭定期计费"],
+        "url": "https://www.microsoft.com/microsoft-365"
+      }
+    },
+    {
+      "canonical_name": "iCloud+",
+      "aliases": ["iCloud", "iCloud云盘", "Apple Distribution International", "apple distribute"],
+      "keywords": ["iCloud"],
+      "cancel": {
+        "app": "iPhone 设置",
+        "steps": ["设置", "顶部 Apple 账户", "iCloud", "管理账户存储", "更改存储空间方案", "降级为免费 5GB"],
+        "url": "https://www.apple.com.cn/icloud/"
+      }
+    },
+    {
+      "canonical_name": "WPS超级会员",
+      "aliases": ["WPS会员", "珠海金山办公软件有限公司", "金山办公"],
+      "keywords": ["WPS"],
+      "cancel": {
+        "app": "WPS Office App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://www.wps.cn/"
+      }
+    },
+    {
+      "canonical_name": "百度文库",
+      "aliases": ["百度文库会员", "百度文库VIP"],
+      "keywords": ["百度文库"],
+      "cancel": {
+        "app": "百度文库 App",
+        "steps": ["我的", "我的VIP", "自动续费管理", "取消自动续费"],
+        "url": "https://wenku.baidu.com/"
+      }
+    },
+    {
+      "canonical_name": "印象笔记",
+      "aliases": ["Evernote", "印象笔记高级账户"],
+      "keywords": ["印象笔记"],
+      "cancel": {
+        "app": "印象笔记 App",
+        "steps": ["我的", "账户与设置", "高级账户", "取消自动续费"],
+        "url": "https://www.yinxiang.com/"
+      }
+    },
+    {
+      "canonical_name": "有道云笔记",
+      "aliases": ["有道云笔记会员"],
+      "keywords": ["有道云笔记"],
+      "cancel": {
+        "app": "有道云笔记 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://note.youdao.com/"
+      }
+    },
+    {
+      "canonical_name": "幕布",
+      "aliases": ["幕布高级版"],
+      "keywords": ["幕布"],
+      "cancel": {
+        "app": "幕布 App",
+        "steps": ["我的", "幕布高级版", "自动续费管理", "取消自动续费"],
+        "url": "https://mubu.com/"
+      }
+    },
+    {
+      "canonical_name": "XMind",
+      "aliases": ["XMind Pro", "XMind:Zen"],
+      "keywords": ["XMind"],
+      "cancel": {
+        "app": "XMind（网页账户）",
+        "steps": ["登录 xmind.cn 账户中心", "订阅管理", "取消订阅"],
+        "url": "https://xmind.cn/"
+      }
+    },
+    {
+      "canonical_name": "石墨文档",
+      "aliases": ["石墨文档高级版"],
+      "keywords": ["石墨文档"],
+      "cancel": {
+        "app": "石墨文档 App",
+        "steps": ["我的", "高级版", "自动续费管理", "取消自动续费"],
+        "url": "https://shimo.im/"
+      }
+    },
+    {
+      "canonical_name": "知乎盐选",
+      "aliases": ["知乎", "知乎会员", "盐选会员"],
+      "keywords": ["盐选会员"],
+      "cancel": {
+        "app": "知乎 App",
+        "steps": ["我的", "盐选会员", "自动续费管理", "关闭自动续费"],
+        "url": "https://www.zhihu.com/xen/market/vip-privileges"
+      }
+    },
+    {
+      "canonical_name": "微信读书",
+      "aliases": ["微信读书付费会员"],
+      "keywords": ["微信读书"],
+      "cancel": {
+        "app": "微信读书 App",
+        "steps": ["我的", "付费会员", "自动续费管理", "关闭自动续费"],
+        "url": "https://weread.qq.com/"
+      }
+    },
+    {
+      "canonical_name": "QQ阅读",
+      "aliases": ["QQ阅读会员"],
+      "keywords": ["QQ阅读"],
+      "cancel": {
+        "app": "QQ阅读 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://www.yuewen.com/"
+      }
+    },
+    {
+      "canonical_name": "掌阅",
+      "aliases": ["iReader", "掌阅精选"],
+      "keywords": ["掌阅"],
+      "cancel": {
+        "app": "掌阅 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://www.ireader.com/"
+      }
+    },
+    {
+      "canonical_name": "得到",
+      "aliases": ["得到App会员"],
+      "keywords": ["得到"],
+      "cancel": {
+        "app": "得到 App",
+        "steps": ["我的", "得到会员", "自动续费管理", "关闭自动续费"],
+        "url": "https://www.dedao.cn/"
+      }
+    },
+    {
+      "canonical_name": "喜马拉雅",
+      "aliases": ["上海喜马拉雅科技有限公司", "喜马拉雅VIP会员"],
+      "keywords": ["喜马拉雅"],
+      "cancel": {
+        "app": "喜马拉雅 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://www.ximalaya.com/"
+      }
+    },
+    {
+      "canonical_name": "腾讯动漫",
+      "aliases": ["腾讯动漫App会员"],
+      "keywords": ["腾讯动漫"],
+      "cancel": {
+        "app": "腾讯动漫 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://ac.qq.com/"
+      }
+    },
+    {
+      "canonical_name": "腾讯体育",
+      "aliases": ["腾讯体育会员"],
+      "keywords": ["腾讯体育"],
+      "cancel": {
+        "app": "腾讯体育 App",
+        "steps": ["我的", "超级会员", "自动续费管理", "关闭自动续费"],
+        "url": "https://sports.qq.com/"
+      }
+    },
+    {
+      "canonical_name": "QQ会员",
+      "aliases": ["腾讯QQ会员", "QQ超级会员"],
+      "keywords": ["QQ会员", "QQ超级会员"],
+      "cancel": {
+        "app": "QQ App",
+        "steps": ["个人资料页", "会员中心", "自动续费管理", "关闭自动续费"],
+        "url": "https://vip.qq.com/"
+      }
+    },
+    {
+      "canonical_name": "京东PLUS会员",
+      "aliases": ["京东PLUS", "京东会员"],
+      "keywords": ["京东PLUS"],
+      "cancel": {
+        "app": "京东 App",
+        "steps": ["我的", "PLUS会员", "自动续费管理", "取消自动续费"],
+        "url": "https://www.jd.com/"
+      }
+    },
+    {
+      "canonical_name": "淘宝88VIP",
+      "aliases": ["88VIP", "淘宝超级会员"],
+      "keywords": ["88VIP"],
+      "cancel": {
+        "app": "淘宝 App",
+        "steps": ["我的淘宝", "88VIP", "自动续费管理", "取消自动续费"],
+        "url": "https://www.taobao.com/"
+      }
+    },
+    {
+      "canonical_name": "唯品会SVIP",
+      "aliases": ["唯品会会员", "唯品会超级VIP"],
+      "keywords": ["唯品会"],
+      "cancel": {
+        "app": "唯品会 App",
+        "steps": ["我的", "超级VIP", "自动续费管理", "取消自动续费"],
+        "url": "https://www.vip.com/"
+      }
+    },
+    {
+      "canonical_name": "网易严选Pro",
+      "aliases": ["网易严选超级会员"],
+      "keywords": ["网易严选"],
+      "cancel": {
+        "app": "网易严选 App",
+        "steps": ["我的", "超级会员", "自动续费管理", "取消自动续费"],
+        "url": "https://you.163.com/"
+      }
+    },
+    {
+      "canonical_name": "山姆会员店",
+      "aliases": ["山姆会员", "Sam's Club"],
+      "keywords": ["山姆会员"],
+      "cancel": {
+        "app": "山姆会员店 App",
+        "steps": ["我的", "会员权益", "自动续费管理", "取消自动续费"],
+        "url": "https://www.samsclub.cn/"
+      }
+    },
+    {
+      "canonical_name": "美团外卖会员",
+      "aliases": ["美团外卖神会员"],
+      "keywords": ["外卖会员", "神会员"],
+      "cancel": {
+        "app": "美团 App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://waimai.meituan.com/"
+      }
+    },
+    {
+      "canonical_name": "饿了么超级吃货卡",
+      "aliases": ["饿了么吃货卡", "饿了么超级会员"],
+      "keywords": ["吃货卡", "饿了么"],
+      "cancel": {
+        "app": "饿了么 App",
+        "steps": ["我的", "超级吃货卡", "自动续费管理", "取消连续包月"],
+        "url": "https://www.ele.me/"
+      }
+    },
+    {
+      "canonical_name": "哈啰单车骑行卡",
+      "aliases": ["哈啰单车", "哈啰骑行卡", "哈啰出行"],
+      "keywords": ["哈啰"],
+      "cancel": {
+        "app": "哈啰 App",
+        "steps": ["我的", "我的骑行卡", "自动续费管理", "取消自动续费"],
+        "url": "https://www.hellobike.com/"
+      }
+    },
+    {
+      "canonical_name": "携程超级会员",
+      "aliases": ["携程会员"],
+      "keywords": ["携程"],
+      "cancel": {
+        "app": "携程旅行 App",
+        "steps": ["我的", "超级会员", "自动续费管理", "取消自动续费"],
+        "url": "https://www.ctrip.com/"
+      }
+    },
+    {
+      "canonical_name": "Kimi会员",
+      "aliases": ["Kimi", "月之暗面"],
+      "keywords": ["Kimi", "月之暗面"],
+      "cancel": {
+        "app": "Kimi App",
+        "steps": ["我的", "会员中心", "自动续费管理", "取消自动续费"],
+        "url": "https://kimi.moonshot.cn/"
+      }
+    },
+    {
+      "canonical_name": "微博会员",
+      "aliases": ["微博VIP", "新浪微博会员"],
+      "keywords": ["微博会员"],
+      "cancel": {
+        "app": "微博 App",
+        "steps": ["我", "微博会员", "自动续费管理", "关闭自动续费"],
+        "url": "https://weibo.com/"
+      }
+    }
+  ]
+}
