@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="470" viewBox="0 0 1000 470" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" data-palette="56e678-6ae7ca-b6f6ac-dbf2d4e05503" role="img">
+  <title>SubSweep 流程：导出账单 → 拖入 → 逐项确认 → 报告 → 导出 → 本人取消</title>
+  <defs>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#318345"/>
+      <stop offset="1" stop-color="#3b7f6f"/>
+    </linearGradient>
+    
+  </defs>
+  <style>
+    .an-flow { animation: kf-flow 2.6s linear infinite; }
+    .an-blink { animation: kf-blink 2.8s ease-in-out infinite; }
+    .an-drift { animation: kf-drift 5.2s ease-in-out infinite alternate; }
+    .an-spin  { animation: kf-spin 26s linear infinite; transform-origin: 500px 235px; }
+    @keyframes kf-flow { to { stroke-dashoffset: -128; } }
+    @keyframes kf-blink { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+    @keyframes kf-drift { from { transform: translateY(-4px); } to { transform: translateY(4px); } }
+    @keyframes kf-spin { to { transform: rotate(360deg); } }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .an-flow, .an-blink, .an-drift, .an-spin { animation: none !important; }
+    }
+  </style>
+  <rect x="34" y="92" width="268" height="108" rx="12" fill="#f7fef8" stroke="#cbf7d6" stroke-width="1"/>
+<circle cx="68" cy="130" r="16" fill="none" stroke="url(#grad)" stroke-width="1.8"/>
+<text x="68" y="135" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#318345" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">1</text>
+<text x="96" y="135" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="16" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">导出账单</text>
+<text x="54" y="170" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">官方 App 内 · CSV 邮箱接收</text>
+<rect x="344" y="92" width="268" height="108" rx="12" fill="#f7fef8" stroke="#cbf7d6" stroke-width="1"/>
+<circle cx="378" cy="130" r="16" fill="none" stroke="url(#grad)" stroke-width="1.8"/>
+<text x="378" y="135" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#318345" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">2</text>
+<text x="406" y="135" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="16" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">拖入本地页面</text>
+<text x="364" y="170" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">两份一起拖 · 127.0.0.1:8787</text>
+<rect x="654" y="92" width="268" height="108" rx="12" fill="#f7fef8" stroke="#318345" stroke-width="1.4"/>
+<circle cx="688" cy="130" r="16" fill="none" stroke="url(#grad)" stroke-width="1.8"/>
+<text x="688" y="135" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#318345" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">3</text>
+<text x="716" y="135" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="16" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">逐项确认</text>
+<text x="674" y="170" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">纠正匹配 · 标注“不认识”</text>
+<rect x="654" y="268" width="268" height="108" rx="12" fill="#f7fef8" stroke="#cbf7d6" stroke-width="1"/>
+<circle cx="688" cy="306" r="16" fill="none" stroke="url(#grad)" stroke-width="1.8"/>
+<text x="688" y="311" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#318345" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">4</text>
+<text x="716" y="311" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="16" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">体检报告</text>
+<text x="674" y="346" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">年化合计 · 疑似遗忘项排序</text>
+<rect x="344" y="268" width="268" height="108" rx="12" fill="#f7fef8" stroke="#cbf7d6" stroke-width="1"/>
+<circle cx="378" cy="306" r="16" fill="none" stroke="url(#grad)" stroke-width="1.8"/>
+<text x="378" y="311" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#318345" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">5</text>
+<text x="406" y="311" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="16" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">导出存档</text>
+<text x="364" y="346" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Markdown / 单页 HTML / JSON</text>
+<rect x="34" y="268" width="268" height="108" rx="12" fill="#f7fef8" stroke="#318345" stroke-width="1.4"/>
+<circle cx="68" cy="306" r="16" fill="none" stroke="url(#grad)" stroke-width="1.8"/>
+<text x="68" y="311" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#318345" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">6</text>
+<text x="96" y="311" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="16" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">你本人取消</text>
+<text x="54" y="346" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">官方页面 · SubSweep 不代操作</text>
+<circle cx="280" cy="298" r="4" fill="#318345" opacity="1" class="an-blink" style="animation-delay:0s"/>
+<path d="M 306 146 L 336 146" fill="none" stroke="#cbf7d6" stroke-width="1.2" opacity="0.55"/>
+<path d="M 306 146 L 336 146" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.9" class="an-flow" style="animation-delay:0s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<polygon points="340,146 335,142.5 335,149.5" fill="#318345"/>
+<path d="M 616 146 L 646 146" fill="none" stroke="#cbf7d6" stroke-width="1.2" opacity="0.55"/>
+<path d="M 616 146 L 646 146" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.9" class="an-flow" style="animation-delay:0.8s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<polygon points="650,146 645,142.5 645,149.5" fill="#318345"/>
+<path d="M 788 204 L 788 260" fill="none" stroke="#cbf7d6" stroke-width="1.2" opacity="0.55"/>
+<path d="M 788 204 L 788 260" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.9" class="an-flow" style="animation-delay:1.6s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<polygon points="788,264 784.5,259 791.5,259" fill="#318345"/>
+<path d="M 340 322 L 42 322" fill="none" stroke="#cbf7d6" stroke-width="1.2" opacity="0.55"/>
+<path d="M 340 322 L 42 322" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.9" class="an-flow" style="animation-delay:2.2s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<polygon points="38,322 43,318.5 43,325.5" fill="#318345"/>
+<path d="M 650 322 L 352 322" fill="none" stroke="#cbf7d6" stroke-width="1.2" opacity="0.55"/>
+<path d="M 650 322 L 352 322" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.9" class="an-flow" style="animation-delay:3s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<polygon points="348,322 353,318.5 353,325.5" fill="#318345"/>
+<text x="500" y="62" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#557b72" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">官方账单导出 → 启发式检出 → 你逐项确认 → 年化成本 + 官方取消路径</text>
+<text x="34" y="436" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#318345" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">全程 ≤ 10 分钟 · 本地完成</text>
+<text x="966" y="436" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="end" letter-spacing="0" opacity="1">取消动作永远由你本人在官方页面执行</text>
+</svg>

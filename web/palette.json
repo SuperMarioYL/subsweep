@@ -1,0 +1,38 @@
+{
+  "mode": "auto",
+  "id": "56e678-6ae7ca-b6f6ac-dbf2d4e05503",
+  "identity": "https://github.com/supermarioyl/subsweep",
+  "primary": "#56e678",
+  "secondary": "#6ae7ca",
+  "highlight": "#b6f6ac",
+  "dark": {
+    "bg": "#050c0e",
+    "panel": "#0c1719",
+    "code": "#0a1715",
+    "ink": "#f0fdee",
+    "muted": "#95b9ae",
+    "line": "#173c25",
+    "primary": "#56e678",
+    "secondary": "#6ae7ca",
+    "highlight": "#b6f6ac",
+    "accent": "#56e678",
+    "buttonStart": "#328646",
+    "buttonEnd": "#3c8272",
+    "buttonText": "#ffffff"
+  },
+  "light": {
+    "bg": "#f9fefa",
+    "panel": "#f7fef8",
+    "code": "#f3fdf6",
+    "ink": "#132a20",
+    "muted": "#557b72",
+    "line": "#cbf7d6",
+    "primary": "#318345",
+    "secondary": "#3b7f6f",
+    "highlight": "#5c7c57",
+    "accent": "#318345",
+    "buttonStart": "#328646",
+    "buttonEnd": "#3c8272",
+    "buttonText": "#ffffff"
+  }
+}

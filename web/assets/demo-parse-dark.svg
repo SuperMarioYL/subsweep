@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" data-palette="56e678-6ae7ca-b6f6ac-dbf2d4e05503" role="img">
+  <title>实录第二步：parse 逐行打印疑似代扣候选（节选自真实输出）</title>
+  <defs>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#56e678"/>
+      <stop offset="1" stop-color="#6ae7ca"/>
+    </linearGradient>
+    
+  </defs>
+  <style>
+    .an-flow { animation: kf-flow 2.6s linear infinite; }
+    .an-blink { animation: kf-blink 2.8s ease-in-out infinite; }
+    .an-drift { animation: kf-drift 5.2s ease-in-out infinite alternate; }
+    .an-spin  { animation: kf-spin 26s linear infinite; transform-origin: 380px 150px; }
+    @keyframes kf-flow { to { stroke-dashoffset: -128; } }
+    @keyframes kf-blink { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+    @keyframes kf-drift { from { transform: translateY(-4px); } to { transform: translateY(4px); } }
+    @keyframes kf-spin { to { transform: rotate(360deg); } }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .an-flow, .an-blink, .an-drift, .an-spin { animation: none !important; }
+    }
+  </style>
+  <rect x="20" y="20" width="720" height="260" rx="12" fill="#0c1719" stroke="#173c25" stroke-width="1"/>
+<g>
+    <rect x="20" y="20" width="720" height="26" rx="8" fill="rgba(255,255,255,0.04)"/>
+    <circle cx="34" cy="33" r="3.4" fill="#95b9ae" opacity="0.7"/><circle cx="47" cy="33" r="3.4" fill="#95b9ae" opacity="0.7"/><circle cx="60" cy="33" r="3.4" fill="#95b9ae" opacity="0.7"/>
+    <text x="728" y="37" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10" fill="#95b9ae" font-weight="400" text-anchor="end" letter-spacing="0" opacity="1">subsweep parse</text>
+  </g>
+<text x="36" y="66" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#56e678" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">internal/bills/testdata/alipay_sample.csv（支付宝 · 共 27 笔交易，疑似代扣 21 笔）</text>
+<text x="36" y="88" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">商户</text>
+<text x="258" y="88" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">平台</text>
+<text x="316" y="88" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">金额</text>
+<text x="388" y="88" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">日期</text>
+<text x="470" y="88" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">命中信号</text>
+<text x="726" y="88" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#95b9ae" font-weight="400" text-anchor="end" letter-spacing="0" opacity="1">置信度</text>
+<text x="36" y="110" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">上海喜马拉雅科技有限公司</text>
+<text x="258" y="110" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#6ae7ca" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">支付宝</text>
+<text x="316" y="110" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">¥20.00</text>
+<text x="388" y="110" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">2025-04-06</text>
+<text x="470" y="110" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">命中服务名单、按月重复扣款、备注代扣字样</text>
+<text x="726" y="110" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#56e678" font-weight="600" text-anchor="end" letter-spacing="0" opacity="1">0.95</text>
+<text x="36" y="130" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">上海恩空中文化传播有限公司</text>
+<text x="258" y="130" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#6ae7ca" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">支付宝</text>
+<text x="316" y="130" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">¥25.00</text>
+<text x="388" y="130" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">2025-04-10</text>
+<text x="470" y="130" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">命中服务名单、按月重复扣款、备注代扣字样</text>
+<text x="726" y="130" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#56e678" font-weight="600" text-anchor="end" letter-spacing="0" opacity="1">0.95</text>
+<text x="36" y="150" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">北京百度网讯科技有限公司</text>
+<text x="258" y="150" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#6ae7ca" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">支付宝</text>
+<text x="316" y="150" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">¥15.00</text>
+<text x="388" y="150" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">2025-04-15</text>
+<text x="470" y="150" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">命中服务名单、按月重复扣款</text>
+<text x="726" y="150" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#56e678" font-weight="600" text-anchor="end" letter-spacing="0" opacity="1">0.85</text>
+<text x="36" y="172" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">…</text>
+<text x="36" y="198" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#56e678" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">internal/bills/testdata/wechat_sample.csv（微信 · 共 22 笔交易，疑似代扣 14 笔）</text>
+<text x="36" y="220" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">网易云音乐</text>
+<text x="258" y="220" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#6ae7ca" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">微信</text>
+<text x="316" y="220" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">¥15.00</text>
+<text x="388" y="220" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">2025-04-08</text>
+<text x="470" y="220" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">命中服务名单、按月重复扣款</text>
+<text x="726" y="220" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#56e678" font-weight="600" text-anchor="end" letter-spacing="0" opacity="1">0.85</text>
+<text x="36" y="242" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">…</text>
+<text x="36" y="266" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="10.5" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">完整输出见右侧实录 · 每行附命中信号与置信度，交给你逐项核实</text>
+</svg>

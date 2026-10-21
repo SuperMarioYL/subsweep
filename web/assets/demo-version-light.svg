@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" data-palette="56e678-6ae7ca-b6f6ac-dbf2d4e05503" role="img">
+  <title>实录第一步：构建单文件二进制并确认版本，使用随仓库的两份样例账单</title>
+  <defs>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#318345"/>
+      <stop offset="1" stop-color="#3b7f6f"/>
+    </linearGradient>
+    
+  </defs>
+  <style>
+    .an-flow { animation: kf-flow 2.6s linear infinite; }
+    .an-blink { animation: kf-blink 2.8s ease-in-out infinite; }
+    .an-drift { animation: kf-drift 5.2s ease-in-out infinite alternate; }
+    .an-spin  { animation: kf-spin 26s linear infinite; transform-origin: 380px 150px; }
+    @keyframes kf-flow { to { stroke-dashoffset: -128; } }
+    @keyframes kf-blink { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+    @keyframes kf-drift { from { transform: translateY(-4px); } to { transform: translateY(4px); } }
+    @keyframes kf-spin { to { transform: rotate(360deg); } }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .an-flow, .an-blink, .an-drift, .an-spin { animation: none !important; }
+    }
+  </style>
+  <rect x="28" y="28" width="408" height="244" rx="12" fill="#f7fef8" stroke="#cbf7d6" stroke-width="1"/>
+<g>
+    <rect x="28" y="28" width="408" height="26" rx="8" fill="rgba(0,0,0,0.04)"/>
+    <circle cx="42" cy="41" r="3.4" fill="#557b72" opacity="0.7"/><circle cx="55" cy="41" r="3.4" fill="#557b72" opacity="0.7"/><circle cx="68" cy="41" r="3.4" fill="#557b72" opacity="0.7"/>
+    <text x="424" y="45" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10" fill="#557b72" font-weight="400" text-anchor="end" letter-spacing="0" opacity="1">terminal</text>
+  </g>
+<text x="46" y="84" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">$ go build -o subsweep .</text>
+<text x="46" y="126" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">$ ./subsweep version</text>
+<text x="46" y="154" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" fill="#318345" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">subsweep 0.1.0 (darwin/arm64)</text>
+<path d="M 46 182 L 418 182" fill="none" stroke="#cbf7d6" stroke-width="1.2" opacity="0.6"/>
+<text x="46" y="212" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Release 提供预编译下载（macOS / Windows / Linux）</text>
+<text x="46" y="232" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">单文件 · 约 10MB · 解压即用</text>
+<rect x="464" y="28" width="268" height="244" rx="12" fill="#f7fef8" stroke="#cbf7d6" stroke-width="1"/>
+<text x="480" y="56" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">样例账单 · 随仓库内置</text>
+<rect x="480" y="72" width="236" height="58" rx="9" fill="#f3fdf6" stroke="#cbf7d6" stroke-width="1"/>
+<text x="494" y="96" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#3b7f6f" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">alipay_sample.csv</text>
+<text x="494" y="116" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="10.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">支付宝 · GB18030 · 27 笔</text>
+<rect x="480" y="142" width="236" height="58" rx="9" fill="#f3fdf6" stroke="#cbf7d6" stroke-width="1"/>
+<text x="494" y="166" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" fill="#3b7f6f" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">wechat_sample.csv</text>
+<text x="494" y="186" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="10.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">微信 · UTF-8 (BOM) · 22 笔</text>
+<text x="480" y="244" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">时间窗 2025-04-01 ~ 2025-09-30</text>
+<text x="480" y="262" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="10.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">脱敏合成样例 · 可完整复现</text>
+</svg>

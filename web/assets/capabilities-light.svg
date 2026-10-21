@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="470" viewBox="0 0 1000 470" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" data-palette="56e678-6ae7ca-b6f6ac-dbf2d4e05503" role="img">
+  <title>SubSweep 能力全景：单文件二进制与两平台导出、知识库、可选 LLM、三种导出格式和本地网页</title>
+  <defs>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#318345"/>
+      <stop offset="1" stop-color="#3b7f6f"/>
+    </linearGradient>
+    
+  </defs>
+  <style>
+    .an-flow { animation: kf-flow 2.6s linear infinite; }
+    .an-blink { animation: kf-blink 2.8s ease-in-out infinite; }
+    .an-drift { animation: kf-drift 5.2s ease-in-out infinite alternate; }
+    .an-spin  { animation: kf-spin 26s linear infinite; transform-origin: 300px 258px; }
+    @keyframes kf-flow { to { stroke-dashoffset: -128; } }
+    @keyframes kf-blink { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+    @keyframes kf-drift { from { transform: translateY(-4px); } to { transform: translateY(4px); } }
+    @keyframes kf-spin { to { transform: rotate(360deg); } }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .an-flow, .an-blink, .an-drift, .an-spin { animation: none !important; }
+    }
+  </style>
+  <circle cx="300" cy="258" r="128" fill="none" stroke="#cbf7d6" opacity="0.8"/>
+<circle cx="300" cy="258" r="196" fill="none" stroke="#cbf7d6" stroke-dasharray="4 7" opacity="0.7"/>
+<g class="an-spin" opacity="0.9">
+<circle cx="428" cy="258" r="3.4" fill="#318345" opacity="1"/>
+<circle cx="438.5929291125633" cy="396.5929291125633" r="2.6" fill="#3b7f6f" opacity="1"/>
+<circle cx="300" cy="386" r="3.4" fill="#318345" opacity="1"/>
+<circle cx="161.4070708874367" cy="396.5929291125633" r="2.6" fill="#3b7f6f" opacity="1"/>
+<circle cx="172" cy="258" r="3.4" fill="#318345" opacity="1"/>
+<circle cx="161.40707088743665" cy="119.4070708874367" r="2.6" fill="#3b7f6f" opacity="1"/>
+<circle cx="300" cy="130" r="3.4" fill="#318345" opacity="1"/>
+<circle cx="438.5929291125633" cy="119.40707088743665" r="2.6" fill="#3b7f6f" opacity="1"/>
+</g>
+<g filter="url(#glow)">
+    <rect x="238" y="224" width="124" height="68" rx="17" fill="none" stroke="url(#grad)" stroke-width="2.2"/>
+  </g>
+<text x="300" y="254" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="16" fill="#132a20" font-weight="700" text-anchor="middle" letter-spacing="0" opacity="1">subsweep</text>
+<text x="300" y="276" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="10.5" fill="#557b72" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">单文件 · embed.FS</text>
+<g>
+      <rect x="251" y="111" width="98" height="38" rx="11" fill="#f7fef8" stroke="#cbf7d6"/>
+      <text x="300" y="129" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12" fill="#132a20" font-weight="600" text-anchor="middle" letter-spacing="0" opacity="1">支付宝导出</text>
+      <text x="300" y="143" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9.5" fill="#557b72" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">GB18030</text>
+    </g>
+<g>
+      <rect x="376.605" y="239" width="102.78999999999999" height="38" rx="11" fill="#f7fef8" stroke="#cbf7d6"/>
+      <text x="428" y="257" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12" fill="#132a20" font-weight="600" text-anchor="middle" letter-spacing="0" opacity="1">微信导出</text>
+      <text x="428" y="271" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9.5" fill="#557b72" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">UTF-8 (BOM)</text>
+    </g>
+<g>
+      <rect x="242.12" y="367" width="115.75999999999999" height="38" rx="11" fill="#f7fef8" stroke="#cbf7d6"/>
+      <text x="300" y="385" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12" fill="#132a20" font-weight="600" text-anchor="middle" letter-spacing="0" opacity="1">知识库 50 项</text>
+      <text x="300" y="399" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9.5" fill="#557b72" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">人工核验</text>
+    </g>
+<g>
+      <rect x="107.52000000000001" y="239" width="128.95999999999998" height="38" rx="11" fill="#f7fef8" stroke="#cbf7d6"/>
+      <text x="172" y="257" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12" fill="#132a20" font-weight="600" text-anchor="middle" letter-spacing="0" opacity="1">DeepSeek 可选</text>
+      <text x="172" y="271" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="9.5" fill="#557b72" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">默认关闭</text>
+    </g>
+<rect x="370.7629291125633" y="104.4070708874367" width="135.65999999999997" height="30" rx="15" fill="rgba(255,255,255,0.6)" stroke="#cbf7d6"/>
+<text x="438.5929291125633" y="123.4070708874367" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#3b7f6f" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">parse · report</text>
+<rect x="400.37097914175" y="341" width="138.74" height="30" rx="15" fill="rgba(255,255,255,0.6)" stroke="#cbf7d6"/>
+<text x="469.74097914175" y="360" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#3b7f6f" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">serve · 本地网页</text>
+<rect x="53.51902085825003" y="341" width="153.47999999999996" height="30" rx="15" fill="rgba(255,255,255,0.6)" stroke="#cbf7d6"/>
+<text x="130.25902085825" y="360" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#3b7f6f" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">MD · HTML · JSON</text>
+<rect x="119.5370708874367" y="104.40707088743667" width="83.74000000000001" height="30" rx="15" fill="rgba(255,255,255,0.6)" stroke="#cbf7d6"/>
+<text x="161.4070708874367" y="123.40707088743667" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#3b7f6f" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">version</text>
+<text x="586" y="74" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="14.5" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">已实现能力 · v0.1.0</text>
+<path d="M 590 100 l 4.5 5 l 8 -10" fill="none" stroke="#318345" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="612" y="106" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#132a20" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">两平台账单解析 · 自动编码探测</text>
+<path d="M 590 134 l 4.5 5 l 8 -10" fill="none" stroke="#318345" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="612" y="140" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#132a20" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">三类启发式检出 + 逐项确认</text>
+<path d="M 590 168 l 4.5 5 l 8 -10" fill="none" stroke="#318345" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="612" y="174" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#132a20" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">年化成本与疑似遗忘项排序</text>
+<path d="M 590 202 l 4.5 5 l 8 -10" fill="none" stroke="#318345" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="612" y="208" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#132a20" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">50 项官方取消路径 · 人工核验</text>
+<path d="M 590 236 l 4.5 5 l 8 -10" fill="none" stroke="#318345" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="612" y="242" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#132a20" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Markdown / 单页 HTML / JSON 导出</text>
+<path d="M 590 270 l 4.5 5 l 8 -10" fill="none" stroke="#318345" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="612" y="276" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#132a20" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">本地网页 · 数据仅在内存</text>
+<path d="M 586 306 L 966 306" fill="none" stroke="#cbf7d6" stroke-width="1.2" opacity="0.7"/>
+<text x="586" y="336" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12" fill="#557b72" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">明确不做</text>
+<text x="586" y="360" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">无人值守代取消 · 账单上传与云端存储 ·</text>
+<text x="586" y="380" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">支付宝/微信之外平台解析 · LLM 生成取消步骤</text>
+<text x="586" y="428" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#3b7f6f" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">CLI：subsweep parse | report | serve | version</text>
+</svg>

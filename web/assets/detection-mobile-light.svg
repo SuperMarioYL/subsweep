@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="700" viewBox="0 0 700 700" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" data-palette="56e678-6ae7ca-b6f6ac-dbf2d4e05503" role="img">
+  <title>SubSweep 检出（窄幅）：三类启发式并集与逐项确认</title>
+  <defs>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#318345"/>
+      <stop offset="1" stop-color="#3b7f6f"/>
+    </linearGradient>
+    
+  </defs>
+  <style>
+    .an-flow { animation: kf-flow 2.6s linear infinite; }
+    .an-blink { animation: kf-blink 2.8s ease-in-out infinite; }
+    .an-drift { animation: kf-drift 5.2s ease-in-out infinite alternate; }
+    .an-spin  { animation: kf-spin 26s linear infinite; transform-origin: 350px 350px; }
+    @keyframes kf-flow { to { stroke-dashoffset: -128; } }
+    @keyframes kf-blink { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+    @keyframes kf-drift { from { transform: translateY(-4px); } to { transform: translateY(4px); } }
+    @keyframes kf-spin { to { transform: rotate(360deg); } }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .an-flow, .an-blink, .an-drift, .an-spin { animation: none !important; }
+    }
+  </style>
+  <rect x="40" y="40" width="620" height="78" rx="12" fill="#f7fef8" stroke="#318345" stroke-width="1.4"/>
+<text x="56" y="68" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">微信 · 商户消费 — 腾讯视频 ¥30.00</text>
+<text x="56" y="92" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">官方导出里没有一列直接标记“代扣”</text>
+<rect x="40" y="158" width="620" height="88" rx="12" fill="#f7fef8" stroke="#cbf7d6" stroke-width="1"/>
+<rect x="40" y="158" width="4" height="88" rx="2" fill="#318345"/>
+<text x="60" y="192" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="14.5" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">① 命中服务名单</text>
+<text x="60" y="218" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">商户名命中内置 50 项知识库</text>
+<text x="644" y="206" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#318345" font-weight="700" text-anchor="end" letter-spacing="0" opacity="1">+0.55</text>
+<path d="M 350 118 L 350 152" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.8" class="an-flow" style="animation-delay:0s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<polygon points="350,156 346.78,151.4 353.22,151.4" fill="#318345"/>
+<rect x="40" y="272" width="620" height="88" rx="12" fill="#f7fef8" stroke="#cbf7d6" stroke-width="1"/>
+<rect x="40" y="272" width="4" height="88" rx="2" fill="#318345"/>
+<text x="60" y="306" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="14.5" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">② 同额月度重复</text>
+<text x="60" y="332" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">相邻两次扣款间隔 27–33 天</text>
+<text x="644" y="320" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#318345" font-weight="700" text-anchor="end" letter-spacing="0" opacity="1">+0.30</text>
+<path d="M 350 232 L 350 266" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.8" class="an-flow" style="animation-delay:0.9s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<polygon points="350,270 346.78,265.4 353.22,265.4" fill="#318345"/>
+<rect x="40" y="386" width="620" height="88" rx="12" fill="#f7fef8" stroke="#cbf7d6" stroke-width="1"/>
+<rect x="40" y="386" width="4" height="88" rx="2" fill="#318345"/>
+<text x="60" y="420" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="14.5" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">③ 分类/备注关键词</text>
+<text x="60" y="446" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">“代扣 / 自动续费 / 自动扣款”等字样</text>
+<text x="644" y="434" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#318345" font-weight="700" text-anchor="end" letter-spacing="0" opacity="1">+0.15</text>
+<path d="M 350 346 L 350 380" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.8" class="an-flow" style="animation-delay:1.8s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<polygon points="350,384 346.78,379.4 353.22,379.4" fill="#318345"/>
+<rect x="40" y="512" width="620" height="170" rx="12" fill="#f7fef8" stroke="#318345" stroke-width="1.4"/>
+<text x="58" y="544" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="13.5" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">三类信号取并集 → 置信度 0.95（上限 0.95）</text>
+<text x="58" y="568" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">权重 0.55 / 0.30 / 0.15 · 逐项确认后清单才成立</text>
+<rect x="58" y="592" width="180" height="30" rx="15" fill="none" stroke="#cbf7d6"/>
+<circle cx="76" cy="607" r="4" fill="#318345" opacity="1" class="an-blink" style="animation-delay:0s"/>
+<text x="90" y="612" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#132a20" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">待确认</text>
+<rect x="258" y="592" width="180" height="30" rx="15" fill="none" stroke="#cbf7d6"/>
+<circle cx="276" cy="607" r="4" fill="#3b7f6f" opacity="1" class="an-blink" style="animation-delay:0.8s"/>
+<text x="290" y="612" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#132a20" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">已确认</text>
+<rect x="458" y="592" width="180" height="30" rx="15" fill="none" stroke="#cbf7d6"/>
+<circle cx="476" cy="607" r="4" fill="#557b72" opacity="1" class="an-blink" style="animation-delay:1.6s"/>
+<text x="490" y="612" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#132a20" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">不认识</text>
+<text x="58" y="660" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">示例取自内置样例账单实录：腾讯视频三项信号全命中 → 0.95</text>
+</svg>

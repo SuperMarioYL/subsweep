@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="540" viewBox="0 0 1000 540" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" data-palette="56e678-6ae7ca-b6f6ac-dbf2d4e05503" role="img">
+  <title>SubSweep 检出示意：三类启发式取并集，加权置信度，交由用户逐项确认</title>
+  <defs>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="16"/>
+    </filter>
+    <linearGradient id="grad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#56e678"/>
+      <stop offset="1" stop-color="#6ae7ca"/>
+    </linearGradient>
+    
+  </defs>
+  <style>
+    .an-flow { animation: kf-flow 2.6s linear infinite; }
+    .an-blink { animation: kf-blink 2.8s ease-in-out infinite; }
+    .an-drift { animation: kf-drift 5.2s ease-in-out infinite alternate; }
+    .an-spin  { animation: kf-spin 26s linear infinite; transform-origin: 500px 270px; }
+    @keyframes kf-flow { to { stroke-dashoffset: -128; } }
+    @keyframes kf-blink { 0%, 100% { opacity: 0.25; } 50% { opacity: 1; } }
+    @keyframes kf-drift { from { transform: translateY(-4px); } to { transform: translateY(4px); } }
+    @keyframes kf-spin { to { transform: rotate(360deg); } }
+    
+    @media (prefers-reduced-motion: reduce) {
+      .an-flow, .an-blink, .an-drift, .an-spin { animation: none !important; }
+    }
+  </style>
+  <rect x="40" y="40" width="372" height="84" rx="12" fill="#0c1719" stroke="#56e678" stroke-width="1.4"/>
+<text x="56" y="68" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">官方导出中的一行</text>
+<text x="56" y="92" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#f0fdee" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">微信 · 商户消费 — 腾讯视频 ¥30.00</text>
+<text x="56" y="112" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">官方导出里没有一列直接标记“代扣”</text>
+<path d="M 226 124 L 226 160" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.75" class="an-flow" style="animation-delay:0s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<polygon points="226,164 222.78,159.4 229.22,159.4" fill="#56e678"/>
+<path d="M 226 124 L 226 134 L 72 134 L 72 326 L 96 326" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.75" class="an-flow" style="animation-delay:0.9s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<polygon points="100,326 95.4,322.78 95.4,329.22" fill="#56e678"/>
+<path d="M 72 330 L 72 436 L 96 436" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.75" class="an-flow" style="animation-delay:1.8s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<polygon points="100,440 95.4,436.78 95.4,443.22" fill="#56e678"/>
+<rect x="104" y="168" width="620" height="88" rx="12" fill="#0c1719" stroke="#173c25" stroke-width="1"/>
+<rect x="104" y="168" width="4" height="88" rx="2" fill="#56e678"/>
+<text x="126" y="202" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="15" fill="#f0fdee" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">① 命中服务名单</text>
+<text x="126" y="230" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">商户名（含计费公司名与会员产品名）命中内置 50 项知识库</text>
+<rect x="551.34" y="198" width="106.66" height="26" rx="13" fill="none" stroke="#173c25"/>
+<text x="604.67" y="215" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#6ae7ca" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">services.json</text>
+<text x="706" y="215" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#56e678" font-weight="700" text-anchor="end" letter-spacing="0" opacity="1">+0.55</text>
+<rect x="104" y="282" width="620" height="88" rx="12" fill="#0c1719" stroke="#173c25" stroke-width="1"/>
+<rect x="104" y="282" width="4" height="88" rx="2" fill="#56e678"/>
+<text x="126" y="316" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="15" fill="#f0fdee" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">② 同额月度重复</text>
+<text x="126" y="344" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">同一商户、同一金额，按月周期重复扣款</text>
+<rect x="555.08" y="312" width="102.91999999999999" height="26" rx="13" fill="none" stroke="#173c25"/>
+<text x="606.54" y="329" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#6ae7ca" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">间隔 27–33 天</text>
+<text x="706" y="329" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#56e678" font-weight="700" text-anchor="end" letter-spacing="0" opacity="1">+0.30</text>
+<circle cx="400" cy="342" r="4" fill="#56e678" opacity="0.9"/>
+<circle cx="446" cy="342" r="4" fill="#6ae7ca" opacity="0.78"/>
+<path d="M 406 342 L 440 342" fill="none" stroke="#173c25" stroke-width="1.2" opacity="0.5"/>
+<circle cx="492" cy="342" r="4" fill="#6ae7ca" opacity="0.66"/>
+<path d="M 452 342 L 486 342" fill="none" stroke="#173c25" stroke-width="1.2" opacity="0.5"/>
+<circle cx="538" cy="342" r="4" fill="#6ae7ca" opacity="0.54"/>
+<path d="M 498 342 L 532 342" fill="none" stroke="#173c25" stroke-width="1.2" opacity="0.5"/>
+<rect x="104" y="396" width="620" height="88" rx="12" fill="#0c1719" stroke="#173c25" stroke-width="1"/>
+<rect x="104" y="396" width="4" height="88" rx="2" fill="#56e678"/>
+<text x="126" y="430" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="15" fill="#f0fdee" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">③ 分类/备注关键词</text>
+<text x="126" y="458" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">交易分类或备注出现“代扣 / 自动续费 / 自动扣款”等字样</text>
+<rect x="585" y="426" width="73" height="26" rx="13" fill="none" stroke="#173c25"/>
+<text x="621.5" y="443" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#6ae7ca" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">备注：代扣</text>
+<text x="706" y="443" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="15" fill="#56e678" font-weight="700" text-anchor="end" letter-spacing="0" opacity="1">+0.15</text>
+<rect x="756" y="168" width="212" height="316" rx="12" fill="#0c1719" stroke="#56e678" stroke-width="1.4"/>
+<text x="772" y="200" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="13.5" fill="#f0fdee" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">三类信号取并集</text>
+<text x="772" y="240" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11.5" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">置信度</text>
+<text x="772" y="276" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="40" fill="#56e678" font-weight="700" text-anchor="start" letter-spacing="0" opacity="1">0.95</text>
+<text x="772" y="298" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">权重 0.55/0.30/0.15 · 上限 0.95</text>
+<rect x="772" y="330" width="180" height="30" rx="15" fill="none" stroke="#173c25"/>
+<circle cx="790" cy="345" r="4" fill="#56e678" opacity="1" class="an-blink" style="animation-delay:0s"/>
+<text x="804" y="350" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">待确认</text>
+<rect x="772" y="370" width="180" height="30" rx="15" fill="none" stroke="#173c25"/>
+<circle cx="790" cy="385" r="4" fill="#6ae7ca" opacity="1" class="an-blink" style="animation-delay:0.8s"/>
+<text x="804" y="390" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">已确认</text>
+<rect x="772" y="410" width="180" height="30" rx="15" fill="none" stroke="#173c25"/>
+<circle cx="790" cy="425" r="4" fill="#95b9ae" opacity="1" class="an-blink" style="animation-delay:1.6s"/>
+<text x="804" y="430" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">不认识</text>
+<text x="772" y="464" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">逐项确认后清单才成立</text>
+<path d="M 724 212 L 756 212" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.5" class="an-flow" style="animation-delay:0.4s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<path d="M 724 326 L 756 326" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.5" class="an-flow" style="animation-delay:0.78s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<path d="M 724 440 L 756 440" fill="none" stroke="url(#grad)" stroke-width="1.6" opacity="0.5" class="an-flow" style="animation-delay:1.1600000000000001s" stroke-dasharray="7 9" stroke-linecap="round"/>
+<text x="40" y="524" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11.5" fill="#95b9ae" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">示例取自内置样例账单实录：腾讯视频（微信 · 月费 ¥30.00）三项信号全命中 → 0.95 · 待确认</text>
+</svg>

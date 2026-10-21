@@ -1,0 +1,396 @@
+{
+  "schema": 3,
+  "name": "SubSweep",
+  "github": "https://github.com/SuperMarioYL/subsweep",
+  "palette": "auto",
+  "lang": {
+    "primary": "zh",
+    "toggle": true
+  },
+  "hero": {
+    "eyebrow": {
+      "zh": "单文件本地程序 · 无账号 · 无上传 · 无数据库",
+      "en": "One local binary · no account · nothing uploaded · no database"
+    },
+    "headline": {
+      "zh": "拖入支付宝 / 微信账单导出\n30 秒看清全部自动续费",
+      "en": "Drop in your Alipay / WeChat bill export\nSee every auto-renewal in 30 seconds"
+    },
+    "sub": {
+      "zh": "在支付宝和微信里签过的自动续费，你未必都记得。把官方账单导出交给 SubSweep，10 分钟内得到一份续费体检清单：每一笔代扣是什么、一年花多少、去哪里关掉。",
+      "en": "The auto-renewals you signed inside Alipay and WeChat are easy to forget. Hand SubSweep the official bill exports and get a renewal audit checklist within 10 minutes: what each recurring charge is, what it costs per year, and where to turn it off."
+    },
+    "href": "#quickstart",
+    "command": "subsweep serve"
+  },
+  "advantages": [
+    {
+      "title": {
+        "zh": "官方账单导出，直接解析",
+        "en": "Parses the official bill exports"
+      },
+      "body": {
+        "zh": "只消费支付宝与微信的官方账单导出：自动探测格式与编码——支付宝 GB18030（含元数据表头）、微信 UTF-8 带 BOM（含填充行）——把两份 CSV 解析成同一套结构化扣款记录。不逆向本地加密数据库、不爬取。",
+        "en": "SubSweep consumes only the official CSV exports of Alipay and WeChat, detecting format and encoding automatically — Alipay GB18030 with its metadata preamble, WeChat UTF-8 with BOM and padded rows — and parses both into one structured set of deductions. No reverse-engineered local databases, no scraping."
+      },
+      "chips": [
+        "› 支付宝 GB18030",
+        "› 微信 UTF-8 (BOM)"
+      ]
+    },
+    {
+      "title": {
+        "zh": "三类启发式检出，逐项由你确认",
+        "en": "Three heuristics, confirmed by you"
+      },
+      "body": {
+        "zh": "官方导出里没有任何一列直接标记“代扣”。SubSweep 取三类信号的并集——命中 50 项服务名单、同额月度重复扣款（27–33 天间隔）、分类/备注关键词——加权成 0–0.95 的置信度，检出的每一行都由你逐项核实：这是体检清单，不是机械结论。",
+        "en": "No column in the export marks a charge as an auto-renewal. SubSweep takes the union of three signals — a hit in the 50-service catalog, same-amount monthly repeats 27–33 days apart, and category/remark keywords — weights them into a 0–0.95 confidence score, and hands every suspected row to you for verification: a checklist to confirm, not a mechanical verdict."
+      },
+      "chips": [
+        "› 3 类信号并集",
+        "› 置信度上限 0.95"
+      ]
+    },
+    {
+      "title": {
+        "zh": "年化成本，一次算清",
+        "en": "Annualized cost, settled in one line"
+      },
+      "body": {
+        "zh": "同一签约的月费 × 12，每笔签约只计一次，直接回答“这一年被动扣了多少”。实录样例：2 份账单、49 笔交易，检出 8 项疑似自动续费（35 笔扣款），年化合计 ¥2,052.00。",
+        "en": "Each signing is counted once at monthly fee × 12, answering “what do these cost me a year”. In the recorded sample run: 2 statements, 49 transactions, 8 suspected auto-renewals (35 charges), ¥2,052.00 annualized."
+      },
+      "chips": [
+        "› 实录样例：年化 ¥2,052.00"
+      ]
+    },
+    {
+      "title": {
+        "zh": "逐项官方取消路径",
+        "en": "Official cancel paths, per item"
+      },
+      "body": {
+        "zh": "内置人工核验的知识库覆盖 50 项高频续费服务（视频、音乐、网盘、工具会员），每项给出 App 内取消路径与在线入口；知识库未收录的商户会被明确标出，绝不编造路径。",
+        "en": "A human-verified catalog covers 50 high-frequency renewal services (video, music, cloud storage, productivity memberships), each mapped to its in-app cancellation path and web entry. Merchants the catalog does not know are flagged — never invented."
+      },
+      "chips": [
+        "› 50 项 · 人工核验",
+        "› 未收录商户明确标出"
+      ]
+    },
+    {
+      "title": {
+        "zh": "数据不出本机",
+        "en": "Nothing leaves your machine"
+      },
+      "body": {
+        "zh": "约 10MB 的单文件 Go 程序，无账号、无上传、无数据库：账单只在内存与本地会话里，本地网页跑在 127.0.0.1:8787，Ctrl+C 即结束。",
+        "en": "A single ~10MB Go binary with no account, no upload and no database: bills live in memory and the local session only, the web UI runs on 127.0.0.1:8787, and Ctrl+C ends it all."
+      },
+      "chips": [
+        "› 约 10MB 单文件",
+        "› 127.0.0.1:8787"
+      ]
+    },
+    {
+      "title": {
+        "zh": "可选 LLM，默认关闭",
+        "en": "Optional LLM, off by default"
+      },
+      "body": {
+        "zh": "DeepSeek 辅助分类默认关闭；开启后仅发送识别不出的商户名（不含金额、日期、账号），Key 只保存在本次会话内存里。取消路径永远来自人工核验的知识库，不由模型生成。",
+        "en": "The DeepSeek classification assist is off by default; when enabled it sends only unrecognized merchant names — never amounts, dates or account identifiers — and the key stays in session memory. Cancel paths always come from the human-verified catalog, never from the model."
+      },
+      "chips": [
+        "› 仅发送商户名"
+      ]
+    }
+  ],
+  "demo": {
+    "title": {
+      "zh": "实录：一次完整运行",
+      "en": "A recorded run, end to end"
+    },
+    "note": {
+      "zh": "数据为随仓库内置的脱敏合成样例（支付宝 GB18030、微信 UTF-8 带 BOM），可完整复现；命令与输出逐字取自 docs/demo-results.json，本次运行未使用任何外部服务（LLM 默认关闭）。",
+      "en": "The data is the anonymized synthetic sample shipped with the repo (Alipay GB18030, WeChat UTF-8 with BOM), fully reproducible; commands and output are copied verbatim from docs/demo-results.json. No external service was used in this run (the LLM assist is off by default)."
+    },
+    "source": "https://github.com/SuperMarioYL/subsweep/blob/main/docs/demo-results.json",
+    "steps": [
+      {
+        "label": {
+          "zh": "确认版本",
+          "en": "Check the build"
+        },
+        "body": {
+          "zh": "构建单文件二进制（Release 也提供预编译下载），确认版本；随后使用随仓库的两份样例账单：支付宝导出（GB18030，27 笔交易）与微信导出（UTF-8 带 BOM，22 笔交易），时间窗 2025-04-01 ~ 2025-09-30。",
+          "en": "Build the single-file binary (prebuilt archives are on Releases) and check the version; then use the two sample exports bundled with the repo: Alipay (GB18030, 27 transactions) and WeChat (UTF-8 with BOM, 22 transactions), window 2025-04-01 ~ 2025-09-30."
+        },
+        "image": "/assets/demo-version-light.svg",
+        "imageDark": "/assets/demo-version-dark.svg",
+        "command": "./subsweep version",
+        "output": "subsweep 0.1.0 (darwin/arm64)"
+      },
+      {
+        "label": {
+          "zh": "解析检出",
+          "en": "Parse and detect"
+        },
+        "body": {
+          "zh": "parse 逐行打印疑似代扣候选：商户、平台、金额、日期、命中信号、置信度。支付宝 27 笔交易中检出疑似代扣 21 笔，微信 22 笔中检出 14 笔。",
+          "en": "parse prints the suspected deduction candidates line by line — merchant, platform, amount, date, hit signals, confidence. 21 of the 27 Alipay transactions and 14 of the 22 WeChat transactions are flagged."
+        },
+        "image": "/assets/demo-parse-light.svg",
+        "imageDark": "/assets/demo-parse-dark.svg",
+        "command": "./subsweep parse internal/bills/testdata/alipay_sample.csv internal/bills/testdata/wechat_sample.csv",
+        "output": "\ninternal/bills/testdata/alipay_sample.csv（支付宝 · 共 27 笔交易，疑似代扣 21 笔）\n商户                        平台      金额  日期        命中信号                                  置信度\n上海喜马拉雅科技有限公司    支付宝  ¥20.00  2025-04-06  命中服务名单、按月重复扣款、备注代扣字样    0.95\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-04-10  命中服务名单、按月重复扣款、备注代扣字样    0.95\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-04-15  命中服务名单、按月重复扣款                  0.85\n杭州优卖网络科技有限公司    支付宝  ¥39.00  2025-04-21  按月重复扣款                                0.30\n上海喜马拉雅科技有限公司    支付宝  ¥20.00  2025-05-06  命中服务名单、按月重复扣款                  0.85\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-05-10  命中服务名单、按月重复扣款                  0.85\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-05-15  命中服务名单、按月重复扣款                  0.85\n杭州优卖网络科技有限公司    支付宝  ¥39.00  2025-05-21  按月重复扣款                                0.30\n上海喜马拉雅科技有限公司    支付宝  ¥20.00  2025-06-06  命中服务名单、按月重复扣款                  0.85\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-06-10  命中服务名单、按月重复扣款                  0.85\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-06-15  命中服务名单、按月重复扣款                  0.85\n杭州优卖网络科技有限公司    支付宝  ¥39.00  2025-06-21  按月重复扣款                                0.30\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-07-10  命中服务名单、按月重复扣款                  0.85\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-07-15  命中服务名单、按月重复扣款                  0.85\n杭州优卖网络科技有限公司    支付宝  ¥39.00  2025-07-21  按月重复扣款                                0.30\n珠海金山办公软件有限公司    支付宝  ¥12.00  2025-08-02  命中服务名单、备注代扣字样                  0.70\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-08-10  命中服务名单、按月重复扣款                  0.85\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-08-15  命中服务名单、按月重复扣款                  0.85\n杭州优卖网络科技有限公司    支付宝  ¥39.00  2025-08-21  按月重复扣款                                0.30\n上海恩空中文化传播有限公司  支付宝  ¥25.00  2025-09-10  命中服务名单、按月重复扣款                  0.85\n北京百度网讯科技有限公司    支付宝  ¥15.00  2025-09-15  命中服务名单、按月重复扣款                  0.85\n\ninternal/bills/testdata/wechat_sample.csv（微信 · 共 22 笔交易，疑似代扣 14 笔）\n商户        平台    金额  日期        命中信号                                  置信度\n网易云音乐  微信  ¥15.00  2025-04-08  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-04-12  命中服务名单、按月重复扣款、备注代扣字样    0.95\n网易云音乐  微信  ¥15.00  2025-05-08  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-05-12  命中服务名单、按月重复扣款                  0.85\nQQ音乐      微信  ¥15.00  2025-06-01  命中服务名单、按月重复扣款、备注代扣字样    0.95\n网易云音乐  微信  ¥15.00  2025-06-08  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-06-12  命中服务名单、按月重复扣款                  0.85\nQQ音乐      微信  ¥15.00  2025-07-01  命中服务名单、按月重复扣款                  0.85\n网易云音乐  微信  ¥15.00  2025-07-08  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-07-12  命中服务名单、按月重复扣款                  0.85\nQQ音乐      微信  ¥15.00  2025-08-01  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-08-12  命中服务名单、按月重复扣款                  0.85\n网易云音乐  微信  ¥15.00  2025-09-08  命中服务名单、按月重复扣款                  0.85\n腾讯视频    微信  ¥30.00  2025-09-12  命中服务名单、按月重复扣款                  0.85"
+      },
+      {
+        "label": {
+          "zh": "体检报告",
+          "en": "Audit report"
+        },
+        "body": {
+          "zh": "report 按签约分组生成续费体检清单：8 项疑似自动续费（35 笔扣款）、年化合计 ¥2,052.00、逐项官方取消入口，并导出 Markdown 报告。首行“杭州优卖网络科技有限公司”是知识库未收录的陌生商户——正是最值得先核实的一类。",
+          "en": "report groups the findings per signing: 8 suspected auto-renewals (35 charges), ¥2,052.00 annualized, and the official cancel entry for each item, exported as Markdown. The first row, 杭州优卖网络科技有限公司, is a merchant the catalog does not know yet — exactly the kind of signing worth checking first."
+        },
+        "image": "/assets/demo-report-light.svg",
+        "imageDark": "/assets/demo-report-dark.svg",
+        "command": "./subsweep report internal/bills/testdata/alipay_sample.csv internal/bills/testdata/wechat_sample.csv -o 体检报告.md",
+        "output": "续费体检清单（2026-10-21 08:25）\n扫描 2 份账单、49 笔交易，检出疑似自动续费 8 项（35 笔扣款），年化合计 ¥2,052.00\n已确认 0 项、待确认 8 项、不认识 0 项\n\n商户                      平台      月费     年化  信号                                        置信度  状态    取消入口      \n杭州优卖网络科技有限公司  支付宝  ¥39.00  ¥468.00  按月重复扣款                                  0.30  待确认  未收录        \n腾讯视频                  微信    ¥30.00  ¥360.00  命中服务名单、按月重复扣款、备注含代扣字样    0.95  待确认  腾讯视频 App  \n爱奇艺                    支付宝  ¥25.00  ¥300.00  命中服务名单、按月重复扣款、备注含代扣字样    0.95  待确认  爱奇艺 App    \n喜马拉雅                  支付宝  ¥20.00  ¥240.00  命中服务名单、按月重复扣款、备注含代扣字样    0.95  待确认  喜马拉雅 App  \nQQ音乐                    微信    ¥15.00  ¥180.00  命中服务名单、按月重复扣款、备注含代扣字样    0.95  待确认  QQ音乐 App    \n百度网盘                  支付宝  ¥15.00  ¥180.00  命中服务名单、按月重复扣款                    0.85  待确认  百度网盘 App  \n网易云音乐                微信    ¥15.00  ¥180.00  命中服务名单、按月重复扣款                    0.85  待确认  网易云音乐 App\nWPS超级会员               支付宝  ¥12.00  ¥144.00  命中服务名单、备注含代扣字样                  0.70  待确认  WPS Office App\n\n待核实 8 项——逐项确认后即为最终清单。"
+      },
+      {
+        "label": {
+          "zh": "本地网页",
+          "en": "Local web UI"
+        },
+        "body": {
+          "zh": "serve 启动本地网页（默认 http://127.0.0.1:8787）：拖入两份账单、逐项确认、纠正匹配或标注“不认识”，导出 Markdown / 单页 HTML / JSON。数据仅在内存中。",
+          "en": "serve starts the local web page (default http://127.0.0.1:8787): drop in both exports, confirm item by item, correct matches or mark “unrecognized”, then export Markdown / single-page HTML / JSON. Data lives in memory only."
+        },
+        "image": "/assets/demo-serve-light.svg",
+        "imageDark": "/assets/demo-serve-dark.svg",
+        "command": "./subsweep serve",
+        "output": "SubSweep 续费体检已启动：http://127.0.0.1:8787\n数据仅在内存中，Ctrl+C 退出。"
+      }
+    ]
+  },
+  "quickstart": {
+    "title": {
+      "zh": "三步跑通，从样例账单到体检报告",
+      "en": "Three steps from sample bills to an audit report"
+    },
+    "body": {
+      "zh": "需要 Go 1.24+（或到 Releases 下载 macOS / Windows / Linux 预编译包，解压即用）。导出你自己的账单：支付宝「我的 → 账单 → 右上角「…」→ 开具交易流水证明 → 用于个人对账」；微信「我 → 服务 → 钱包 → 账单 → 右上角「常见问题」→ 下载账单 → 用于个人对账」——CSV 通过邮箱接收，两份可以一起拖进本地页面。",
+      "en": "Requires Go 1.24+ (or grab a prebuilt macOS / Windows / Linux archive from Releases and unpack it). To export your own bills: Alipay “Me → Bills → “…” (top right) → Issue transaction statement → for personal reconciliation”; WeChat “Me → Services → Wallet → Bills → “FAQ” (top right) → Download bill → for personal reconciliation” — the CSV arrives by email, and both can be dropped into the local page together."
+    },
+    "steps": [
+      {
+        "title": {
+          "zh": "克隆并构建",
+          "en": "Clone and build"
+        },
+        "code": "git clone https://github.com/SuperMarioYL/subsweep.git\ncd subsweep\ngo build -o subsweep ."
+      },
+      {
+        "title": {
+          "zh": "先用样例账单看效果（也可直接换成你自己的导出）",
+          "en": "See it work on the bundled samples (or drop in your own exports)"
+        },
+        "code": "go run . parse internal/bills/testdata/alipay_sample.csv internal/bills/testdata/wechat_sample.csv\ngo run . report internal/bills/testdata/alipay_sample.csv internal/bills/testdata/wechat_sample.csv -o 体检报告.md"
+      },
+      {
+        "title": {
+          "zh": "启动本地网页，拖入账单、逐项确认、导出报告",
+          "en": "Start the local web UI — drop in bills, confirm, export"
+        },
+        "code": "go run . serve"
+      }
+    ]
+  },
+  "limitations": [
+    {
+      "zh": "仅支持支付宝与微信的官方账单导出；京东、美团、抖音、Apple 内购等其他平台不在范围内。",
+      "en": "Official Alipay and WeChat exports only; other platforms such as JD, Meituan, Douyin and Apple in-app purchases are out of scope."
+    },
+    {
+      "zh": "检出是启发式并集，供逐项确认而非机械结论；月度重复判定要求相邻两次扣款间隔 27–33 天，跳月续费可能漏检。",
+      "en": "Detection is a union of heuristics meant for per-item confirmation, not a mechanical verdict; monthly-repeat detection requires consecutive charges 27–33 days apart, so renewals that skip a month can be missed."
+    },
+    {
+      "zh": "关键词只扫描交易分类/交易类型与备注两列，商品说明列的“连续包月”不算信号。",
+      "en": "Keywords are scanned only in the transaction-category and remark columns; “连续包月” (continuous monthly plan) in the product-description column is not a signal."
+    },
+    {
+      "zh": "取消路径来自人工核验的知识库（50 项），App 改版后可能过期，请以服务方官方页面为准；发现过期欢迎提 issue 或直接 PR。",
+      "en": "Cancel paths come from a human-verified catalog (50 services) and can go stale after app redesigns — always defer to the provider's official page, and please open an issue or send a PR when one does."
+    },
+    {
+      "zh": "DeepSeek 辅助分类默认关闭；开启后仅发送商户名，不含金额与账号。LLM 不生成取消步骤。",
+      "en": "The DeepSeek classification assist is off by default; when enabled it sends merchant names only — never amounts or account identifiers. The model never generates cancel steps."
+    },
+    {
+      "zh": "不做平台自动化与无人值守代取消：取消动作永远由你本人在官方页面完成。",
+      "en": "No platform automation or unattended cancellation: the cancellation is always performed by you, on the official page."
+    },
+    {
+      "zh": "v0.1 是本地命令行与本地网页；移动端 App、微信小程序、云端托管与账单上传存储不在范围内。",
+      "en": "v0.1 ships as a local CLI plus a local web page; mobile apps, WeChat mini programs, cloud hosting and bill upload/storage are out of scope."
+    }
+  ],
+  "scene": {
+    "kind": "neon-graph",
+    "fallback": "/assets/scene-dark.svg",
+    "fallbackLight": "/assets/scene-light.svg",
+    "caption": {
+      "zh": "拖入账单，30 秒看清全部自动续费——数据不出本机",
+      "en": "Drop in your bill exports and see every auto-renewal in 30 seconds — nothing leaves your machine"
+    }
+  },
+  "story": {
+    "intro": {
+      "title": {
+        "zh": "记不全的自动续费，该做一次体检了",
+        "en": "Auto-renewals you can't recall deserve an audit"
+      },
+      "body": {
+        "zh": "自动续费的问题不在于“扣了多少”，在于你记不全签过哪些：支付宝和微信的“自动扣款”管理页只列本平台的签约项，另一边签了什么、年化多少，两边互相看不见；各 App 的取消入口层级很深，还常用“关闭会员 ≠ 关闭自动续费”的话术挽留；记账 App 导入账单是为了统计支出，不回答“哪几笔是仍在生效的代扣协议、去哪里关”。SubSweep 补的正是这段空隙。",
+        "en": "The trouble with auto-renewals is not the amount — it is that you can no longer remember what you signed. The auto-deduction pages in Alipay and WeChat each list only their own platform's agreements, so what you signed on the other side — and what it costs a year — is invisible from either. Every app buries its cancellation entry deep in settings, leaning on “cancelling membership ≠ cancelling auto-renewal” retention copy. Expense trackers import bills for spending statistics; they never answer “which of these are still-active deduction agreements, and where do I cancel each one?” SubSweep fills exactly that gap."
+      }
+    },
+    "sections": [
+      {
+        "title": {
+          "zh": "从官方导出到结构化扣款",
+          "en": "From official exports to structured deductions"
+        },
+        "body": {
+          "zh": "整个产品是一个 Go 二进制：bills parser 负责格式探测与启发式检出，catalog 内嵌 50 项取消路径知识库，match 负责字典命中与模糊匹配，report 负责年化折算与渲染，local server 把单页 UI 跑在 127.0.0.1:8787——数据仅在内存。除解析与匹配外全部使用 Go 标准库。",
+          "en": "The whole product is one Go binary: the bills parser handles format detection and candidate heuristics, the catalog embeds the 50-service cancel-path knowledge base, match does dictionary and fuzzy matching, report annualizes and renders, and the local server serves the single-page UI on 127.0.0.1:8787 — data in memory only. Everything outside parsing and matching is the Go standard library."
+        },
+        "image": {
+          "light": "/assets/architecture-light.svg",
+          "dark": "/assets/architecture-dark.svg",
+          "alt": {
+            "zh": "SubSweep 架构图：支付宝与微信账单导出经 bills parser 解析检出，结合 catalog 知识库与 match 匹配，由 report 生成年化报告，local server 在 127.0.0.1:8787 提供本地页面",
+            "en": "SubSweep architecture: Alipay and WeChat bill exports flow through the bills parser, joined by the catalog knowledge base and the matcher, rendered into an annualized report by report, and served locally by the local server on 127.0.0.1:8787"
+          },
+          "mobile": {
+            "light": "/assets/architecture-mobile-light.svg",
+            "dark": "/assets/architecture-mobile-dark.svg"
+          }
+        }
+      },
+      {
+        "title": {
+          "zh": "三类信号，一份候选清单",
+          "en": "Three signals, one candidate list"
+        },
+        "body": {
+          "zh": "官方导出里没有任何一列直接标记“代扣”：交易分类只是消费品类目，微信里订阅续期也只显示为“商户消费”。所以 SubSweep 不做单列机械过滤，而是三类启发式取并集——命中服务名单（0.55）、同额月度重复（0.30）、分类/备注关键词（0.15）——合成 0–0.95 的置信度，把疑似代扣行交给你逐项核实。",
+          "en": "No column in the export marks a charge as an auto-renewal: transaction categories are just a spending taxonomy, and in WeChat even subscription renewals show up as plain merchant purchases. So SubSweep filters no single column — it unions three heuristics, known-service hit (0.55), same-amount monthly repeat (0.30) and category/remark keywords (0.15), into a 0–0.95 confidence score, and hands the suspected rows to you."
+        },
+        "image": {
+          "light": "/assets/detection-light.svg",
+          "dark": "/assets/detection-dark.svg",
+          "alt": {
+            "zh": "检出示意图：一笔商户消费流入三类启发式——命中服务名单、同额月度重复、分类/备注关键词——加权成置信度后进入逐项确认",
+            "en": "Detection diagram: one merchant purchase flows into the three heuristics — known-service hit, same-amount monthly repeat, category/remark keywords — weighted into a confidence score, then per-item confirmation"
+          },
+          "mobile": {
+            "light": "/assets/detection-mobile-light.svg",
+            "dark": "/assets/detection-mobile-dark.svg"
+          }
+        }
+      },
+      {
+        "title": {
+          "zh": "你确认之后，清单才成立",
+          "en": "The checklist becomes final after you confirm"
+        },
+        "body": {
+          "zh": "在本地网页里逐项确认：拿不准的行点选候选服务纠正匹配，或标注“不认识”。确认后的报告给出年化成本（月费 × 12，每笔签约只计一次）、疑似遗忘项排序与逐项官方取消入口，一键导出 Markdown、单页 HTML 或 JSON。取消动作永远由你本人在官方页面完成。",
+          "en": "You confirm item by item in the local web UI: uncertain rows can be corrected by picking a candidate service or marked “unrecognized”. The confirmed report gives annualized cost (monthly × 12, each signing once), a suspected-forgotten ranking and the official cancel entry per item, exportable as Markdown, single-page HTML or JSON. The cancellation itself is always performed by you, on the official page."
+        },
+        "image": {
+          "light": "/assets/workflow-light.svg",
+          "dark": "/assets/workflow-dark.svg",
+          "alt": {
+            "zh": "流程图：导出账单 → 拖入本地页面 → 逐项确认 → 年化报告 → 导出 Markdown/HTML/JSON → 你本人在官方页面取消",
+            "en": "Workflow: export bills → drop into the local page → confirm item by item → annualized report → export Markdown/HTML/JSON → cancel on the official page yourself"
+          },
+          "mobile": {
+            "light": "/assets/workflow-mobile-light.svg",
+            "dark": "/assets/workflow-mobile-dark.svg"
+          }
+        }
+      },
+      {
+        "title": {
+          "zh": "50 项取消路径，人工核验",
+          "en": "50 cancel paths, human-verified"
+        },
+        "body": {
+          "zh": "知识库覆盖视频、音乐、网盘、工具类等 50 项高频续费服务，每项含计费公司名与会员产品名别名、特征关键词和官方取消路径（App 内路径 + 在线入口），全部人工核验、可由社区 PR 持续修正；陌生商户被明确标出，DeepSeek 只在明确开启后辅助分类商户名，永不生成取消路径。",
+          "en": "The catalog covers 50 high-frequency renewal services — video, music, cloud storage, productivity — each with billing-company and membership aliases, distinctive keywords and official cancel paths (in-app route plus web entry), all human-verified and corrected through community PRs. Unknown merchants are flagged; DeepSeek only assists merchant classification when explicitly enabled and never generates cancel paths."
+        },
+        "image": {
+          "light": "/assets/capabilities-light.svg",
+          "dark": "/assets/capabilities-dark.svg",
+          "alt": {
+            "zh": "能力全景图：单文件二进制居中，环绕接入支付宝导出、微信导出、50 项知识库、可选 DeepSeek（默认关闭）、Markdown/HTML/JSON 导出与本地网页",
+            "en": "Capability map: the single binary at the center, connected to the Alipay export, WeChat export, the 50-service catalog, the optional DeepSeek assist (off by default), Markdown/HTML/JSON export and the local web UI"
+          },
+          "mobile": {
+            "light": "/assets/capabilities-mobile-light.svg",
+            "dark": "/assets/capabilities-mobile-dark.svg"
+          }
+        }
+      }
+    ],
+    "details": [
+      {
+        "title": {
+          "zh": "serve 的可选参数",
+          "en": "Optional flags of serve"
+        },
+        "body": {
+          "zh": "默认监听 127.0.0.1:8787（仅本机回环），可改地址、跳过自动打开浏览器；填入自己的 DeepSeek Key 可开启辅助分类（模型 id 可配置，默认 deepseek-flash，也可用环境变量 SUBSWEEP_LLM_KEY）。",
+          "en": "The default listen address is 127.0.0.1:8787 (loopback only); you can change the address or skip opening the browser. Supplying your own DeepSeek key enables the classification assist (model id configurable, deepseek-flash by default; the SUBSWEEP_LLM_KEY environment variable also works)."
+        },
+        "code": "subsweep serve -addr 127.0.0.1:8787 -no-open\nsubsweep serve -llm-key $SUBSWEEP_LLM_KEY"
+      },
+      {
+        "title": {
+          "zh": "解析失败与知识库纠错",
+          "en": "Failed parses and catalog fixes"
+        },
+        "body": {
+          "zh": "导出格式变化会导致解析失败——欢迎附上脱敏后的失败样本提 issue，样本会直接变成新的金样测试用例；取消路径过期也请提 issue 或直接 PR 修改 internal/catalog/data/services.json。",
+          "en": "Export-format changes can break parsing — please attach an anonymized failing sample to an issue; each sample becomes a new golden test case. Stale cancel paths are equally welcome as issues or direct PRs against internal/catalog/data/services.json."
+        }
+      }
+    ]
+  },
+  "cta": {
+    "headline": {
+      "zh": "10 分钟，做一次续费体检",
+      "en": "Run a renewal audit in 10 minutes"
+    },
+    "sub": {
+      "zh": "下载数秒即用的单文件程序，拖入账单，看清每一笔代扣、年化成本与去哪里关掉。",
+      "en": "Download a single-file binary that starts in seconds, drop in your bill exports, and see every recurring charge, its annualized cost, and where to turn it off."
+    },
+    "button": {
+      "zh": "在 GitHub 上开始",
+      "en": "Get started on GitHub"
+    }
+  },
+  "footer": {
+    "tag": {
+      "zh": "单文件本地程序 · 无账号 · 无上传 · 无数据库 · MIT",
+      "en": "One local binary · no account · nothing uploaded · no database · MIT"
+    }
+  }
+}
