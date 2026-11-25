@@ -73,7 +73,7 @@
 <text x="130.25902085825" y="360" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#6ae7ca" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">MD · HTML · JSON</text>
 <rect x="119.5370708874367" y="104.40707088743667" width="83.74000000000001" height="30" rx="15" fill="rgba(0,0,0,0.3)" stroke="#173c25"/>
 <text x="161.4070708874367" y="123.40707088743667" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" fill="#6ae7ca" font-weight="400" text-anchor="middle" letter-spacing="0" opacity="1">version</text>
-<text x="586" y="74" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="14.5" fill="#f0fdee" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">已实现能力 · v0.1.0</text>
+<text x="586" y="74" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="14.5" fill="#f0fdee" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">已实现能力 · v0.2.0</text>
 <path d="M 590 100 l 4.5 5 l 8 -10" fill="none" stroke="#56e678" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="612" y="106" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#f0fdee" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">两平台账单解析 · 自动编码探测</text>
 <path d="M 590 134 l 4.5 5 l 8 -10" fill="none" stroke="#56e678" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>

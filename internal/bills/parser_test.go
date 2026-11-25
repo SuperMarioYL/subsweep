@@ -1,6 +1,8 @@
 package bills_test
 
 import (
+	"sort"
+	"strings"
 	"testing"
 
 	"github.com/SuperMarioYL/subsweep/internal/bills"
@@ -191,4 +193,74 @@ func TestSuspectsWechatKnownMerchantMonthlyRepeatAndKeyword(t *testing.T) {
 func TestSuspectsOnEmptyStatement(t *testing.T) {
 	st := &bills.Statement{}
 	assert.Empty(t, st.Suspects())
+}
+
+// reverseRows returns the fixture with its data rows listed newest-first, the
+// way a re-sorted or re-merged export can arrive.
+func reverseRows(t *testing.T, fixture string) string {
+	t.Helper()
+	lines := strings.Split(fixture, "\n")
+	header := -1
+	for i, line := range lines {
+		if strings.HasPrefix(line, "交易时间,") {
+			header = i
+			break
+		}
+	}
+	require.NotEqual(t, -1, header, "fixture must contain a header row")
+
+	rows := lines[header+1:]
+	for len(rows) > 0 && strings.TrimSpace(rows[len(rows)-1]) == "" {
+		rows = rows[:len(rows)-1]
+	}
+	out := append([]string{}, lines[:header+1]...)
+	for i := len(rows) - 1; i >= 0; i-- {
+		out = append(out, rows[i])
+	}
+	return strings.Join(out, "\n") + "\n"
+}
+
+// The monthly-repeat heuristic must be a property of the dates, not of the
+// order the export happens to list its rows in: a newest-first export used to
+// lose the signal (and the annualized cost that rides on it) for every series
+// while still exiting 0.
+func TestSuspectsMonthlyCadenceIgnoresRowOrder(t *testing.T) {
+	ascending, err := bills.Parse(mustGB18030(t, alipayFixture))
+	require.NoError(t, err)
+	descending, err := bills.Parse(mustGB18030(t, reverseRows(t, alipayFixture)))
+	require.NoError(t, err)
+
+	type outcome struct {
+		signals    string
+		confidence float64
+	}
+	byRow := func(sus []bills.Suspect) map[string]outcome {
+		out := make(map[string]outcome, len(sus))
+		for _, s := range sus {
+			sigs := append([]string{}, s.Signals...)
+			sort.Strings(sigs)
+			out[s.Deduction.RowID] = outcome{strings.Join(sigs, ","), s.Confidence}
+		}
+		return out
+	}
+
+	ascSuspects := ascending.Suspects()
+	descSuspects := descending.Suspects()
+	require.NotEmpty(t, ascSuspects)
+	require.Len(t, descSuspects, len(ascSuspects), "row order must not change which rows are flagged")
+	assert.Equal(t, byRow(ascSuspects), byRow(descSuspects),
+		"each row must keep its signals and confidence whatever the export order")
+}
+
+// An export that carries the official header but no transaction rows is almost
+// always a truncated download; reporting a clean bill for it would be an
+// unfalsifiable all-clear at exit 0.
+func TestParseRejectsHeaderOnlyExport(t *testing.T) {
+	headerOnly := `支付宝交易明细
+账号:[181****5678]
+交易时间,交易分类,交易对方,对方账号,商品说明,收/支,金额,收/付款方式,交易状态,交易订单号,商家订单号,备注
+`
+	_, err := bills.Parse(mustGB18030(t, headerOnly))
+	require.Error(t, err)
+	assert.Contains(t, err.Error(), "没有任何交易行")
 }

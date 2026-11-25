@@ -11,7 +11,9 @@ import (
 	"io"
 	"io/fs"
 	"mime/multipart"
+	"net"
 	"net/http"
+	"strings"
 	"sync"
 	"time"
 
@@ -23,6 +25,28 @@ import (
 
 // DefaultAddr is the loopback address the UI listens on.
 const DefaultAddr = "127.0.0.1:8787"
+
+// ValidateAddr refuses a listen address that is not loopback. The UI holds
+// bill contents, the session's confirmation state and the optional API key, so
+// binding a routable interface would break the "nothing leaves this machine"
+// promise no matter what the docs say. An empty host (":8787") is rejected
+// rather than read as "all interfaces".
+func ValidateAddr(addr string) error {
+	host, _, err := net.SplitHostPort(addr)
+	if err != nil {
+		return fmt.Errorf("server: 监听地址 %q 无效: %w", addr, err)
+	}
+	if strings.TrimSpace(host) == "" {
+		return fmt.Errorf("server: 监听地址 %q 缺少主机（空主机等于绑定所有网卡），请用 %s", addr, DefaultAddr)
+	}
+	if strings.EqualFold(host, "localhost") {
+		return nil
+	}
+	if ip := net.ParseIP(host); ip == nil || !ip.IsLoopback() {
+		return fmt.Errorf("server: 监听地址 %q 不是回环地址；SubSweep 只允许 127.0.0.1 / ::1 / localhost", addr)
+	}
+	return nil
+}
 
 const maxUploadBytes = 32 << 20 // per uploaded bill file
 

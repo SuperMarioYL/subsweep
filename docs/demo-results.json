@@ -1,6 +1,6 @@
 {
   "tool": "subsweep",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "recorded_at": "2026-10-21",
   "description": "一次完整快速上手运行的实录：两份合成样例账单导出（支付宝 GB18030、微信 UTF-8 带 BOM）→ 解析检出 → 续费体检报告。所有数据为脱敏合成样例，随仓库内置，可完整复现。",
   "environment": {
@@ -34,7 +34,7 @@
     },
     {
       "cmd": "./subsweep version",
-      "output": "subsweep 0.1.0 (darwin/arm64)"
+      "output": "subsweep 0.2.0 (darwin/arm64)"
     },
     {
       "cmd": "./subsweep parse internal/bills/testdata/alipay_sample.csv internal/bills/testdata/wechat_sample.csv",

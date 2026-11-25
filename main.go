@@ -31,8 +31,20 @@ import (
 //go:embed web
 var webFS embed.FS
 
-// version is stamped by goreleaser via -ldflags "-X main.version=...".
-var version = "0.1.0"
+//go:embed VERSION
+var versionFile string
+
+// version is the release version. It stays uninitialised so that
+// -ldflags "-X main.version=..." can stamp it at link time (goreleaser does);
+// a plain `go build` falls back to the embedded VERSION file in init, which
+// keeps the number in one place instead of a second literal here.
+var version string
+
+func init() {
+	if version == "" {
+		version = strings.TrimSpace(versionFile)
+	}
+}
 
 const usage = `subsweep %s — 续费体检：把支付宝/微信账单导出变成续费体检清单
 
@@ -187,6 +199,9 @@ func runServe(args []string) error {
 	llmModel := set.String("llm-model", match.DefaultModel, "可选：LLM 模型 id（如 deepseek-flash / deepseek-v4-pro）")
 	llmURL := set.String("llm-url", match.DefaultBaseURL, "可选：OpenAI 兼容接口地址")
 	if err := set.Parse(args); err != nil {
+		return err
+	}
+	if err := server.ValidateAddr(*addr); err != nil {
 		return err
 	}
 

@@ -36,7 +36,7 @@
   </g>
 <text x="46" y="84" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">$ go build -o subsweep .</text>
 <text x="46" y="126" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">$ ./subsweep version</text>
-<text x="46" y="154" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" fill="#318345" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">subsweep 0.1.0 (darwin/arm64)</text>
+<text x="46" y="154" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="13.5" fill="#318345" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">subsweep 0.2.0 (darwin/arm64)</text>
 <path d="M 46 182 L 418 182" fill="none" stroke="#cbf7d6" stroke-width="1.2" opacity="0.6"/>
 <text x="46" y="212" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">Release 提供预编译下载（macOS / Windows / Linux）</text>
 <text x="46" y="232" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="11" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">单文件 · 约 10MB · 解压即用</text>

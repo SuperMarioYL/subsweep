@@ -85,12 +85,12 @@
         "en": "Nothing leaves your machine"
       },
       "body": {
-        "zh": "约 10MB 的单文件 Go 程序，无账号、无上传、无数据库：账单只在内存与本地会话里，本地网页跑在 127.0.0.1:8787，Ctrl+C 即结束。",
-        "en": "A single ~10MB Go binary with no account, no upload and no database: bills live in memory and the local session only, the web UI runs on 127.0.0.1:8787, and Ctrl+C ends it all."
+        "zh": "约 10MB 的单文件 Go 程序，无账号、无上传、无数据库：账单只在内存与本地会话里，本地网页只监听回环地址（127.0.0.1:8787；传入 0.0.0.0 之类的非回环地址会直接被拒绝），Ctrl+C 即结束。",
+        "en": "A single ~10MB Go binary with no account, no upload and no database: bills live in memory and the local session only, the web UI listens on loopback only (127.0.0.1:8787 — a non-loopback address such as 0.0.0.0 is refused outright), and Ctrl+C ends it all."
       },
       "chips": [
         "› 约 10MB 单文件",
-        "› 127.0.0.1:8787"
+        "› 仅回环监听"
       ]
     },
     {
@@ -130,7 +130,7 @@
         "image": "/assets/demo-version-light.svg",
         "imageDark": "/assets/demo-version-dark.svg",
         "command": "./subsweep version",
-        "output": "subsweep 0.1.0 (darwin/arm64)"
+        "output": "subsweep 0.2.0 (darwin/arm64)"
       },
       {
         "label": {
@@ -215,8 +215,12 @@
       "en": "Official Alipay and WeChat exports only; other platforms such as JD, Meituan, Douyin and Apple in-app purchases are out of scope."
     },
     {
-      "zh": "检出是启发式并集，供逐项确认而非机械结论；月度重复判定要求相邻两次扣款间隔 27–33 天，跳月续费可能漏检。",
-      "en": "Detection is a union of heuristics meant for per-item confirmation, not a mechanical verdict; monthly-repeat detection requires consecutive charges 27–33 days apart, so renewals that skip a month can be missed."
+      "zh": "检出是启发式并集，供逐项确认而非机械结论；月度重复判定按日期排序后取相邻两次扣款，要求间隔 27–33 天（与导出文件的行序无关），跳月续费可能漏检。",
+      "en": "Detection is a union of heuristics meant for per-item confirmation, not a mechanical verdict; monthly-repeat detection sorts the charges by date and requires consecutive ones 27–33 days apart (independent of the row order in the export), so renewals that skip a month can be missed."
+    },
+    {
+      "zh": "账单被截断（只有表头、没有交易行）时会直接报错，而不是静默给出“没有续费”的结论。",
+      "en": "A truncated export (header only, no transaction rows) is rejected with an error instead of silently reporting “no renewals”."
     },
     {
       "zh": "关键词只扫描交易分类/交易类型与备注两列，商品说明列的“连续包月”不算信号。",
@@ -235,8 +239,8 @@
       "en": "No platform automation or unattended cancellation: the cancellation is always performed by you, on the official page."
     },
     {
-      "zh": "v0.1 是本地命令行与本地网页；移动端 App、微信小程序、云端托管与账单上传存储不在范围内。",
-      "en": "v0.1 ships as a local CLI plus a local web page; mobile apps, WeChat mini programs, cloud hosting and bill upload/storage are out of scope."
+      "zh": "v0.2 是本地命令行与本地网页；移动端 App、微信小程序、云端托管与账单上传存储不在范围内。",
+      "en": "v0.2 ships as a local CLI plus a local web page; mobile apps, WeChat mini programs, cloud hosting and bill upload/storage are out of scope."
     }
   ],
   "scene": {

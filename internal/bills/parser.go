@@ -9,6 +9,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"sort"
 	"strings"
 	"time"
 	"unicode/utf8"
@@ -169,7 +170,10 @@ func specFor(header []string) (rowSpec, error) {
 
 // Parse decodes and parses one official bill export, detecting the
 // platform (Alipay exports are GB18030, WeChat exports UTF-8) and the
-// format automatically. Unknown or empty input is an error.
+// format automatically. Unknown, empty or transaction-free input is an
+// error: an export that carries a header but no data rows is almost always a
+// truncated download, and silently reporting "no renewals" for it would be an
+// unfalsifiable all-clear.
 func Parse(raw []byte) (*Statement, error) {
 	if len(bytes.TrimSpace(raw)) == 0 {
 		return nil, errors.New("bills: 输入为空")
@@ -209,6 +213,9 @@ func Parse(raw []byte) (*Statement, error) {
 			return nil, err
 		}
 		st.Deductions = append(st.Deductions, d)
+	}
+	if len(st.Deductions) == 0 {
+		return nil, errors.New("bills: 账单中没有任何交易行（导出可能被截断，或文件只含表头），请重新导出后再试")
 	}
 	return st, nil
 }
@@ -408,6 +415,8 @@ func (s *Statement) Suspects() []Suspect {
 // hasMonthlyCadence reports whether a same-amount series repeats on a
 // monthly rhythm: some consecutive pair sits 27–33 days apart, which
 // tolerates short and long months while ignoring coincidental one-offs.
+// The series is ordered by date first: exports may list rows oldest-first or
+// newest-first, and the cadence is a property of the dates, not of file order.
 func hasMonthlyCadence(rows []*Deduction) bool {
 	if len(rows) < 2 {
 		return false
@@ -420,6 +429,7 @@ func hasMonthlyCadence(rows []*Deduction) bool {
 		}
 		dates = append(dates, t)
 	}
+	sort.Slice(dates, func(i, j int) bool { return dates[i].Before(dates[j]) })
 	for i := 1; i < len(dates); i++ {
 		gap := int(dates[i].Sub(dates[i-1]).Hours() / 24)
 		if gap >= 27 && gap <= 33 {

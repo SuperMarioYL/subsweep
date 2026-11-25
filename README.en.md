@@ -94,7 +94,7 @@ Read as: scanned 2 statements / 49 transactions; 8 suspected auto-renewals found
 
 ```json
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "inputs": [
     { "path": "internal/bills/testdata/alipay_sample.csv", "encoding": "GB18030", "transactions": 27 },
     { "path": "internal/bills/testdata/wechat_sample.csv", "encoding": "UTF-8 (BOM)", "transactions": 22 }
@@ -107,7 +107,7 @@ Read as: scanned 2 statements / 49 transactions; 8 suspected auto-renewals found
   },
   "limitations": [
     "Detection is a union of heuristics (service list + same-amount monthly repeat + category/remark keywords) — a checklist to confirm, not a mechanical verdict",
-    "Monthly-repeat detection requires two consecutive charges 27–33 days apart; renewals that skip a month can be missed",
+    "Monthly-repeat detection sorts the charges by date and requires two consecutive ones 27–33 days apart (independent of the row order in the export); renewals that skip a month can be missed",
     "Keywords are scanned only in the transaction-category and remark columns; \"连续包月\" in the product-description column is not a signal",
     "Cancel paths come from a human-verified catalog (50 services); app redesigns can make a path stale — always defer to the provider's official page",
     "The DeepSeek assist is off by default; when enabled it sends merchant names only — never amounts or account identifiers"
@@ -149,7 +149,7 @@ Optional flags of `subsweep serve`:
 
 | Flag | Default | Description |
 | --- | --- | --- |
-| `-addr` | `127.0.0.1:8787` | Listen address (loopback only) |
+| `-addr` | `127.0.0.1:8787` | Listen address (loopback only; a non-loopback address is refused) |
 | `-no-open` | `false` | Do not open the browser automatically |
 | `-llm-key` | empty (or env `SUBSWEEP_LLM_KEY`) | Optional DeepSeek API key, enables the classification assist |
 | `-llm-model` | `deepseek-flash` | Optional model id (`deepseek-flash` / `deepseek-v4-pro`) |
@@ -157,7 +157,7 @@ Optional flags of `subsweep serve`:
 
 ## Pricing
 
-The CLI and the local web UI of SubSweep are **open source and free** — this repository is the whole product. The ongoing cost is maintaining the cancel-path catalog, and revenue follows the path below (planned, shipping with the v0.2 no-login web version):
+The CLI and the local web UI of SubSweep are **open source and free** — this repository is the whole product. The ongoing cost is maintaining the cancel-path catalog, and revenue follows the path below (planned; form and timing not set — this repository contains the local tool only):
 
 | | Free checklist | Deep report ¥9.9 | Family bundle ¥19.9 |
 | --- | --- | --- | --- |
@@ -171,6 +171,7 @@ The web version targets people who cannot run a command line: no login, single s
 ## Roadmap
 
 - [x] v0.1 — both-platform bill parsing, heuristic detection, 50-service cancel-path catalog, annualized report, local web UI, Markdown / HTML / JSON export
+- [x] v0.2 — monthly-repeat detection no longer depends on the export's row order (newest-first exports are no longer missed); a statement with a header but no transaction rows is rejected instead of read as "no renewals"; `serve` accepts loopback listen addresses only
 - [ ] Cancel-path catalog expansion and quarterly re-verification (community PRs against `internal/catalog/data/services.json`)
 - [ ] No-login web version (single session, used and discarded) with the deep report
 - [ ] Family multi-account merge

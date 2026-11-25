@@ -43,7 +43,7 @@
 <rect x="358" y="222" width="302" height="60" rx="12" fill="#f7fef8" stroke="#cbf7d6" stroke-width="1"/>
 <text x="376" y="248" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="13" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">DeepSeek 可选</text>
 <text x="376" y="268" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="10.5" fill="#557b72" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">默认关闭</text>
-<text x="40" y="320" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="14" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">已实现能力 · v0.1.0</text>
+<text x="40" y="320" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="14" fill="#132a20" font-weight="600" text-anchor="start" letter-spacing="0" opacity="1">已实现能力 · v0.2.0</text>
 <path d="M 44 344 l 4.5 5 l 8 -10" fill="none" stroke="#318345" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
 <text x="66" y="350" font-family="'Space Grotesk', -apple-system, 'PingFang SC', 'Segoe UI', sans-serif" font-size="12.5" fill="#132a20" font-weight="400" text-anchor="start" letter-spacing="0" opacity="1">两平台账单解析 · 自动编码探测</text>
 <path d="M 44 378 l 4.5 5 l 8 -10" fill="none" stroke="#318345" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
